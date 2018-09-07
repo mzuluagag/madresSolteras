@@ -99,18 +99,18 @@ total<-subset(total, total$I_HOGAR!=0)
 # total$ORDEN<-NULL
 attach(total)
 
-modeloTotal<-lm(P1895~P6040+P1896+P1897+P1898+P1899+P1901+P1902+P1903+P1904+P1905+P9030+P5230+P9090+P5095+P1084+P6240+P8587+P6127+P6142+I_HOGAR+CANT_HOG_COMPLETOS+P8520S1A1,data=total,na.action=na.exclude)
-modeloTotalBack<-stepAIC(object=modeloTotal, trace=FALSE, direction="backward", k=2)
-empty.data<-lm(P1895~1,data=total)
-objetivo<-formula(P1895~P6040+P1896+P1897+P1898+P1899+P1901+P1902+P1903+P1904+P1905+P9030+P5230+P9090+P5095+P1084+P6240+P8587+P6127+P6142+I_HOGAR+CANT_HOG_COMPLETOS+P8520S1A1)
-modeloTotalForward<-stepAIC(empty.data,scope=objetivo,direction="forward",trace=FALSE)
-modeloTotalBoth<-stepAIC(empty.data,scope=objetivo,direction="both",trace=FALSE)
-modeloLimpio<-lm(P1895~P1896+P1901+P1905+P1898+P9030+P1899+P5095+P1897+P6040,data=total,na.action=na.exclude)
+# modeloTotal<-lm(P1895~P6040+P1896+P1897+P1898+P1899+P1901+P1902+P1903+P1904+P1905+P9030+P5230+P9090+P5095+P1084+P6240+P8587+P6127+P6142+I_HOGAR+CANT_HOG_COMPLETOS+P8520S1A1,data=total,na.action=na.exclude)
+# modeloTotalBack<-stepAIC(object=modeloTotal, trace=FALSE, direction="backward", k=2)
+# empty.data<-lm(P1895~1,data=total)
+# objetivo<-formula(P1895~P6040+P1896+P1897+P1898+P1899+P1901+P1902+P1903+P1904+P1905+P9030+P5230+P9090+P5095+P1084+P6240+P8587+P6127+P6142+I_HOGAR+CANT_HOG_COMPLETOS+P8520S1A1)
+# modeloTotalForward<-stepAIC(empty.data,scope=objetivo,direction="forward",trace=FALSE)
+# modeloTotalBoth<-stepAIC(empty.data,scope=objetivo,direction="both",trace=FALSE)
+# modeloLimpio<-lm(P1895~P1896+P1901+P1905+P1898+P9030+P1899+P5095+P1897+P6040,data=total,na.action=na.exclude)
 
-modeloMultinomLog<-multinom(P1895~P1896+P1901+P1905+P1898+P9030+P1899+P5095+P1897+P6040,data=total)
-testtable<-table(predict(modeloMultinomLog),total$P1895)
-Missclassification<-1-sum(diag(testtable))/sum(testtable)
-#57% de error de clasificación -->43% de éxito del modelo(regular)
+# modeloMultinomLog<-multinom(P1895~P1896+P1901+P1905+P1898+P9030+P1899+P5095+P1897+P6040,data=total)
+# testtable<-table(predict(modeloMultinomLog),total$P1895)
+# Missclassification<-1-sum(diag(testtable))/sum(testtable)
+# #57% de error de clasificación -->43% de éxito del modelo(regular)
 CheckDir<-0
 vecprom<-c()
 vechijos<-c()
@@ -135,12 +135,12 @@ for(i in 1:nrow(total)){
 total<-cbind2(total,vecprom)
 total<-cbind2(total,vechijos)
 total$P6083S1<-NULL
-colnames(total)[28]<-"cantidad_hijos"
-colnames(total)[27]<-"prom_edad_hijos"
+colnames(total)[27]<-"cantidad_hijos"
+colnames(total)[26]<-"prom_edad_hijos"
 
-#modeloTotal<-lm(P1895~P6040+P1896+P1897+P1898+P1899+P1901+P1902+P1903+P1904+P1905+P9030+P5230+P9090+P5095+P1084+P6240+P8587+P6127+P6142+I_HOGAR+CANT_HOG_COMPLETOS+P8520S1A1+prom_edad_hijos+edad_hijos,data=total,na.action=na.exclude)
-#modeloTotalBack<-stepAIC(object=modeloTotal, trace=FALSE, direction="backward", k=2)
-#modeloLimpio<-lm(P1895~P1896+P1897+P1898+P1899+P1901+P1905+P9030+P5095+prom_edad_hijos+edad_hijos,data=total,na.action=na.exclude)
+modeloTotal<-lm(P1895~P6040+P1896+P1897+P1898+P1899+P1901+P1902+P1903+P1904+P1905+P9030+P5230+P9090+P5095+P1084+P6240+P8587+P6127+P6142+I_HOGAR+CANT_HOG_COMPLETOS+P8520S1A1+prom_edad_hijos+edad_hijos,data=total,na.action=na.exclude)
+modeloTotalBack<-stepAIC(object=modeloTotal, trace=FALSE, direction="backward", k=2)
+modeloLimpio<-lm(P1895~P1896+P1897+P1898+P1899+P1901+P1905+P9030+P5095+prom_edad_hijos+edad_hijos,data=total,na.action=na.exclude)
 
 
 
