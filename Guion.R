@@ -141,8 +141,11 @@ colnames(total)[27]<-"prom_edad_hijos"
 #modeloTotalBack<-stepAIC(object=modeloTotal, trace=FALSE, direction="backward", k=2)
 #modeloLimpio<-lm(P1895~P1896+P1897+P1898+P1899+P1901+P1905+P9030+P5095+prom_edad_hijos+edad_hijos,data=total,na.action=na.exclude)
 
+
+#6000013 ES LA VARIABLE QUE SE LE VA A METER, SÓLO ES PRUEBA
+FamNet<-function(direccion){
 transitoria<-data.frame(HogaresMadresSolteras)
-transitoria<-subset(transitoria,HogaresMadresSolteras$DIRECTORIO==6000013)
+transitoria<-subset(transitoria,HogaresMadresSolteras$DIRECTORIO==direccion)
 coorgraph<-c()
 leyendas<-c()
 for (j in 1:nrow(transitoria)){
@@ -168,5 +171,8 @@ for (j in 1:nrow(transitoria)){
   }
 }
 g1<-graph(coorgraph)
+plot(g1,edge.arrow.size=1, vertex.color="red", vertex.size=15,
+     vertex.frame.color="black", vertex.label.color="black",
+     vertex.label.cex=1, vertex.label.dist=2, edge.curved=0.2,edge.label=leyendas)
 
-
+}
