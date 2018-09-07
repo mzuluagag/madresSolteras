@@ -144,24 +144,29 @@ colnames(total)[27]<-"prom_edad_hijos"
 transitoria<-data.frame(HogaresMadresSolteras)
 transitoria<-subset(transitoria,HogaresMadresSolteras$DIRECTORIO==6000013)
 coorgraph<-c()
+leyendas<-c()
 for (j in 1:nrow(transitoria)){
   for (k in 1:nrow(transitoria)){
     if (transitoria$P6083[k]==1){
       if(transitoria$ORDEN[j]==transitoria$P6083S1[k]){
         coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
+        leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es madre de",transitoria$ORDEN[k])))
       }
     }
     if (transitoria$P6071[k]==1){
       if(transitoria$ORDEN[j]==transitoria$P6071S1[k]){
         coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
+        leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es cónyuge de",transitoria$ORDEN[k])))
   }
     }
     if (transitoria$P6081[k]==1){
       if(transitoria$ORDEN[j]==transitoria$P6081S1[k]){
         coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
+        leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es padre de",transitoria$ORDEN[k])))
       }
     }
   }
 }
+g1<-graph(coorgraph)
 
 
