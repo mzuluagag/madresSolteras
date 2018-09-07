@@ -2,7 +2,7 @@ rm(list=ls())
 library(DataCombine)
 library(MASS)
 library(nnet)
-library(lmtest)
+library(igraph)
 setwd("D:/Documents/GitHub/madresSolteras")
 ComposicionHogar<-read.csv2("Caracteristicas y composicion del hogar/Características y composición del hogar.csv", header=T, sep=",")
 #Seleccionar mujeres
@@ -50,6 +50,7 @@ for(h in 1:ForhLasting){
   transito2<-subset(ComposicionHogar,ComposicionHogar$DIRECTORIO==id[h])
   HogaresMadresSolteras<-rbind2(HogaresMadresSolteras,transito2)
 }
+HogaresMadresSolteras<-HogaresMadresSolteras[!duplicated(HogaresMadresSolteras[c('DIRECTORIO','ORDEN')]),]
 #Se procede ahora a separar las variables a utilizar y verificar que la madre posea registro en todas esas variables a observar
 #Se cargan los datos faltantes
 CondVida<-read.csv2("Condiciones de vida del hogar y tenencia de bienes/Condiciones de vida del hogar y tenencia de bienes.csv",header=T,sep=",")
@@ -142,7 +143,7 @@ colnames(total)[27]<-"prom_edad_hijos"
 #modeloLimpio<-lm(P1895~P1896+P1897+P1898+P1899+P1901+P1905+P9030+P5095+prom_edad_hijos+edad_hijos,data=total,na.action=na.exclude)
 
 
-#6000013 ES LA VARIABLE QUE SE LE VA A METER, SÓLO ES PRUEBA
+
 FamNet<-function(direccion){
 transitoria<-data.frame(HogaresMadresSolteras)
 transitoria<-subset(transitoria,HogaresMadresSolteras$DIRECTORIO==direccion)
@@ -170,9 +171,16 @@ for (j in 1:nrow(transitoria)){
     }
   }
 }
+
 g1<-graph(coorgraph)
-plot(g1,edge.arrow.size=1, vertex.color="red", vertex.size=15,
-     vertex.frame.color="black", vertex.label.color="black",
-     vertex.label.cex=1, vertex.label.dist=2, edge.curved=0.2,edge.label=leyendas)
+
+plot(g1,edge.width=2,edge.arrow.size=0,edge.color="gray",edge.label.font=3,edge.lty="solid",
+     vertex.color="pink",vertex.shape=c("circle","square"),
+     vertex.size=20,vertex.label.font=4,
+     vertex.frame.color="black",vertex.label.color="black",frame=TRUE,vertex.label.dist=0,
+     vertex.label.cex=1, edge.curved=0.2,edge.label=leyendas)
+title(paste("Núcleo familiar de",direccion), sub = "Copyright © 2018 UNALMED",
+      cex.main = 1.5,   font.main= 4, col.main= "black",
+      cex.sub = 0.75, font.sub = 3, col.sub = "red")
 
 }
