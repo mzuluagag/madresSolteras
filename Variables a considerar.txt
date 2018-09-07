@@ -1,0 +1,41 @@
+Datos de la vivienda
+	cantidad hogares completo***
+	P8520S1A1 ESTRATO
+Servicios del hogar
+	I_HOGAR Ingreso mensual total
+Características y comp. del hogar
+	P6040 Años cumplidos
+	P1895 SATISFACCIÓN VIDA
+	P1896 SATISFACCIÓN INGRESO
+	P1897 SATISFACCIÓN SALUD
+	P1898 SATISFACCIÓN SEGURIDAD
+	P1899 SATISFACCIÓN TRABAJO
+	P1901 Feliz ayer
+	P1902 tranquilidad ayer
+	p1903 preocupación ayer
+	p1904 tristeza ayer
+	p1905 vale la pena lo que hace
+Salud
+	p6127 estado de salud
+	p6142 Enfermedad crónica
+	p1708S1 Edad primer hijo
+Educación
+	p8587 Nivel alcanzado edu
+Fuerza de trabajo
+	p6240 actividad mayor parte
+Tecnologías de información y comunicación
+	P1084 - Frecuencia uso internet
+Tenencia y financiación de la vivienda que ocupa el hogar
+	P5095 - La vivienda ocupada es...
+Condiciones de vida del hogar y tenencia de bienes
+	P9030 - Condiciones de vida
+	P5230 - Se considera pobre (Para hallar el porcentaje)
+	P9090 - Ingresos suficientes
+FILTRAR HOGARES CON AL MENOS UNA MADRE SOLTERA
+
+modeloTotal<-lm(P1895~P6040+P1895+P1896+P1897+P1898+P1899+P1901+P1902+P1903+P1904+P1905+P9030+P5230+P9090+P5095+P1084+P6240+P8587+P6127+P6142+log(I_HOGAR)+CANT_HOG_COMPLETOS+P8520S1A1,data=total,na.action=na.exclude)
+modeloTotal<-lm(P1895~P6040+P1896+P1897+P1898+P1899+P1901+P1902+P1903+P1904+P1905+P9030+P5230+P9090+P5095+P1084+P6240+P8587+I_HOGAR+CANT_HOG_COMPLETOS+P8520S1A1,data=total,na.action=na.exclude)
+	
+	
+	
+	
