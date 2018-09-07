@@ -3,7 +3,7 @@ library(DataCombine)
 library(MASS)
 library(nnet)
 library(lmtest)
-setwd("D:/Documents/UNAL/Semestre VIII/Técnicas en aprendizaje estadístico/Trabajo 1/Bases de datos")
+setwd("D:/Documents/GitHub/madresSolteras")
 ComposicionHogar<-read.csv2("Caracteristicas y composicion del hogar/Características y composición del hogar.csv", header=T, sep=",")
 #Seleccionar mujeres
 Mujeres<-data.frame(ComposicionHogar)
@@ -71,7 +71,7 @@ FuerzaTrabajo<-subset(FuerzaTrabajo, select=c(DIRECTORIO, ORDEN, P6240))
 TIC<-subset(TIC, select=c(DIRECTORIO, ORDEN, P1084))
 FinanHogar<-subset(FinanHogar, select=c(DIRECTORIO, ORDEN, P5095))
 CondVida<-subset(CondVida, select=c(DIRECTORIO, ORDEN, P9030, P5230,P9090))
-MadresSolteras<-subset(MadresSolteras, select=c(DIRECTORIO, ORDEN,P6040,P1895,P1896,P1897,P1898,P1899, P1901, P1902,P1903,P1904,P1905))
+MadresSolteras<-subset(MadresSolteras, select=c(DIRECTORIO, ORDEN,P6040,P1895,P1896,P1897,P1898,P1899, P1901, P1902,P1903,P1904,P1905,P6083S1))
 #Procedo a usar la librería datacombine(la cargo al comienzo) que incluye la función "dMerge" la cuál permite eliminar duplicados al hacer un merge
 
 
@@ -94,8 +94,8 @@ total<-subset(total, total$P8587!=Inf)
 total<-subset(total, total$P8520S1A1!=Inf)
 total<-subset(total,total$P1896!=99)
 total<-subset(total, total$I_HOGAR!=0)
-total$DIRECTORIO<-NULL
-total$ORDEN<-NULL
+# total$DIRECTORIO<-NULL
+# total$ORDEN<-NULL
 attach(total)
 
 modeloTotal<-lm(P1895~P6040+P1896+P1897+P1898+P1899+P1901+P1902+P1903+P1904+P1905+P9030+P5230+P9090+P5095+P1084+P6240+P8587+P6127+P6142+I_HOGAR+CANT_HOG_COMPLETOS+P8520S1A1,data=total,na.action=na.exclude)
@@ -110,3 +110,58 @@ modeloMultinomLog<-multinom(P1895~P1896+P1901+P1905+P1898+P9030+P1899+P5095+P189
 testtable<-table(predict(modeloMultinomLog),total$P1895)
 Missclassification<-1-sum(diag(testtable))/sum(testtable)
 #57% de error de clasificación -->43% de éxito del modelo(regular)
+CheckDir<-0
+vecprom<-c()
+vechijos<-c()
+for(i in 1:nrow(total)){
+  if(CheckDir!=total$DIRECTORIO[i]){
+    CheckDir<-total$DIRECTORIO[i]
+    transitoria<-data.frame(HogaresMadresSolteras)
+    transitoria<-subset(transitoria,HogaresMadresSolteras$DIRECTORIO==CheckDir)
+    edad<-0
+    hijos<-0
+    for (k in 1:nrow(transitoria)){
+      if(total$ORDEN[i]==transitoria$P6083S1[k]){
+        hijos<-hijos+1
+        edad<-edad+transitoria$P6040[k]
+        
+      }
+    }
+    vechijos[i]<-hijos
+    vecprom[i]<-edad/hijos
+  }
+}
+total<-cbind2(total,vecprom)
+total<-cbind2(total,vechijos)
+total$P6083S1<-NULL
+colnames(total)[28]<-"cantidad_hijos"
+colnames(total)[27]<-"prom_edad_hijos"
+
+#modeloTotal<-lm(P1895~P6040+P1896+P1897+P1898+P1899+P1901+P1902+P1903+P1904+P1905+P9030+P5230+P9090+P5095+P1084+P6240+P8587+P6127+P6142+I_HOGAR+CANT_HOG_COMPLETOS+P8520S1A1+prom_edad_hijos+edad_hijos,data=total,na.action=na.exclude)
+#modeloTotalBack<-stepAIC(object=modeloTotal, trace=FALSE, direction="backward", k=2)
+#modeloLimpio<-lm(P1895~P1896+P1897+P1898+P1899+P1901+P1905+P9030+P5095+prom_edad_hijos+edad_hijos,data=total,na.action=na.exclude)
+
+transitoria<-data.frame(HogaresMadresSolteras)
+transitoria<-subset(transitoria,HogaresMadresSolteras$DIRECTORIO==6000013)
+coorgraph<-c()
+for (j in 1:nrow(transitoria)){
+  for (k in 1:nrow(transitoria)){
+    if (transitoria$P6083[k]==1){
+      if(transitoria$ORDEN[j]==transitoria$P6083S1[k]){
+        coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
+      }
+    }
+    if (transitoria$P6071[k]==1){
+      if(transitoria$ORDEN[j]==transitoria$P6071S1[k]){
+        coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
+  }
+    }
+    if (transitoria$P6081[k]==1){
+      if(transitoria$ORDEN[j]==transitoria$P6081S1[k]){
+        coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
+      }
+    }
+  }
+}
+
+
