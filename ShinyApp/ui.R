@@ -11,7 +11,7 @@ shinyUI(fluidPage(
              plotOutput("grafo")
              ),
     tabPanel("Modelo de prediccion de satisfaccion",
-             load("www/modeloLimpio"),
+             load("www/modeloLimpio",envir = .GlobalEnv),
              titlePanel("Ingrese los datos a continuacion para realizar la prediccion de satisfaccion"),hr(),
              verticalLayout(
                numericInput("var1",
