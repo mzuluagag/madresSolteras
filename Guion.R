@@ -3,7 +3,12 @@ library(DataCombine)
 library(MASS)
 library(nnet)
 library(igraph)
-setwd("C:/Users/user/Documents/GitHub/madresSolteras")
+library(ggplot2)
+library(network)
+library(GGally)
+library(sna)
+library(cairoDevice)
+setwd("D:/Documents/GitHub/madresSolteras")
 ComposicionHogar<-read.csv2("Caracteristicas y composicion del hogar/Características y composición del hogar.csv", header=T, sep=",")
 #Seleccionar mujeres
 Mujeres<-data.frame(ComposicionHogar)
@@ -145,48 +150,82 @@ modeloLimpio<-lm(P1895~P1896+P1897+P1898+P1899+P1901+P1905+P9030+P5095+prom_edad
 #Modelo transformado para garantizar que los mayores valores sean los mejores en cuánto a calidad de vida
 modeloTransFinal<-lm(P1895~P1896+P1897+P1898+P1899+P1901+P1905+I(-P9030+5)+I(-P5095+7)+prom_edad_hijos+P8520S1A1,data=total,na.action=na.exclude)
 
-
-
 FamNet<-function(direccion){
-transitoria<-data.frame(HogaresMadresSolteras)
-transitoria<-subset(transitoria,HogaresMadresSolteras$DIRECTORIO==direccion)
-coorgraph<-c()
-leyendas<-c()
-for (j in 1:nrow(transitoria)){
-  for (k in 1:nrow(transitoria)){
-    if (transitoria$P6083[k]==1){
-      if(transitoria$ORDEN[j]==transitoria$P6083S1[k]){
-        coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
-        leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es madre de",transitoria$ORDEN[k])))
+  transitoria<-data.frame(HogaresMadresSolteras)
+  transitoria<-subset(transitoria,HogaresMadresSolteras$DIRECTORIO==direccion)
+  leyendas<-c()
+  m<-matrix(0,nrow(transitoria),nrow(transitoria))
+  for (j in 1:nrow(transitoria)){
+    for (k in 1:nrow(transitoria)){
+      if (transitoria$P6083[k]==1){
+        if(transitoria$ORDEN[j]==transitoria$P6083S1[k]){
+          m[j,k]<-1
+          m[k,j]<-1
+          leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es madre de",transitoria$ORDEN[k])))
+        }
+      }
+      if (transitoria$P6071[k]==1){
+        if(transitoria$ORDEN[j]==transitoria$P6071S1[k]){
+          m[j,k]<-1
+          m[k,j]<-1
+          leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es cónyuge de",transitoria$ORDEN[k])))
+        }
+      }
+      if (transitoria$P6081[k]==1){
+        if(transitoria$ORDEN[j]==transitoria$P6081S1[k]){
+          m[j,k]<-1
+          m[k,j]<-1
+          leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es padre de",transitoria$ORDEN[k])))
+        }
       }
     }
-    if (transitoria$P6071[k]==1){
-      if(transitoria$ORDEN[j]==transitoria$P6071S1[k]){
-        coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
-        leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es cónyuge de",transitoria$ORDEN[k])))
   }
-    }
-    if (transitoria$P6081[k]==1){
-      if(transitoria$ORDEN[j]==transitoria$P6081S1[k]){
-        coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
-        leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es padre de",transitoria$ORDEN[k])))
-      }
-    }
-  }
+  
+  g1<-network(m,directed=TRUE)
+  ggnet2(g1,edge.size=1, label=TRUE, color="pink",size=12, edge.label="leyendas")
 }
 
-g1<-graph(coorgraph)
-
-plot(g1,edge.width=2,edge.arrow.size=0,edge.color="gray",edge.label.font=3,edge.lty="solid",
-     vertex.color="pink",vertex.shape=c("square","circle"),
-     vertex.size=20,vertex.label.font=4,
-     vertex.frame.color="black",vertex.label.color="black",frame=TRUE,vertex.label.dist=0,
-     vertex.label.cex=1, edge.curved=0.2,edge.label=leyendas)
-title(paste("Núcleo familiar de",direccion), sub = "Copyright © 2018 UNALMED",
-      cex.main = 1.5,   font.main= 4, col.main= "black",
-      cex.sub = 0.75, font.sub = 3, col.sub = "red")
-
-}
+# FamNet<-function(direccion){
+# transitoria<-data.frame(HogaresMadresSolteras)
+# transitoria<-subset(transitoria,HogaresMadresSolteras$DIRECTORIO==direccion)
+# coorgraph<-c()
+# leyendas<-c()
+# for (j in 1:nrow(transitoria)){
+#   for (k in 1:nrow(transitoria)){
+#     if (transitoria$P6083[k]==1){
+#       if(transitoria$ORDEN[j]==transitoria$P6083S1[k]){
+#         coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
+#         leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es madre de",transitoria$ORDEN[k])))
+#       }
+#     }
+#     if (transitoria$P6071[k]==1){
+#       if(transitoria$ORDEN[j]==transitoria$P6071S1[k]){
+#         coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
+#         leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es cónyuge de",transitoria$ORDEN[k])))
+#   }
+#     }
+#     if (transitoria$P6081[k]==1){
+#       if(transitoria$ORDEN[j]==transitoria$P6081S1[k]){
+#         coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
+#         leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es padre de",transitoria$ORDEN[k])))
+#       }
+#     }
+#   }
+# }
+# 
+# g1<-graph(coorgraph)
+# 
+# plot(g1,edge.width=2,edge.arrow.size=0,edge.color="gray",edge.label.font=3,edge.lty="solid",
+#      vertex.color="pink",vertex.shape=c("square","circle"),
+#      vertex.size=20,vertex.label.font=4,
+#      vertex.frame.color="black",vertex.label.color="black",frame=TRUE,vertex.label.dist=0,
+#      vertex.label.cex=1, edge.curved=0.2,edge.label=leyendas)
+# title(paste("Núcleo familiar de",direccion), sub = "Copyright © 2018 UNALMED",
+#       cex.main = 1.5,   font.main= 4, col.main= "black",
+#       cex.sub = 0.75, font.sub = 3, col.sub = "red")
+# 
+# 
+# }
 
 predictor<-function(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10){
   y<-(as.numeric(coefficients(modeloTransFinal)[2])*a1+as.numeric(coefficients(modeloTransFinal)[3])*a2+
