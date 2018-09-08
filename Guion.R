@@ -95,6 +95,7 @@ total<-subset(total, total$P8587!=Inf)
 total<-subset(total, total$P8520S1A1!=Inf)
 total<-subset(total,total$P1896!=99)
 total<-subset(total, total$I_HOGAR!=0)
+total<-subset(total, total$P8520S1A1!=8|total$P8520S1A1!=9)
 # total$DIRECTORIO<-NULL
 # total$ORDEN<-NULL
 
@@ -141,6 +142,8 @@ attach(total)
 modeloTotal<-lm(P1895~P6040+P1896+P1897+P1898+P1899+P1901+P1902+P1903+P1904+P1905+P9030+P5230+P9090+P5095+P1084+P6240+P8587+P6127+P6142+I_HOGAR+CANT_HOG_COMPLETOS+P8520S1A1+prom_edad_hijos+cantidad_hijos,data=total,na.action=na.exclude)
 modeloTotalBack<-stepAIC(object=modeloTotal, trace=FALSE, direction="backward", k=2)
 modeloLimpio<-lm(P1895~P1896+P1897+P1898+P1899+P1901+P1905+P9030+P5095+prom_edad_hijos+P8520S1A1,data=total,na.action=na.exclude)
+#Modelo transformado para garantizar que los mayores valores sean los mejores en cuánto a calidad de vida
+modeloTransFinal<-lm(P1895~P1896+P1897+P1898+P1899+P1901+P1905+I(-P9030+5)+I(-P5095+7)+prom_edad_hijos+P8520S1A1,data=total,na.action=na.exclude)
 
 
 
@@ -183,4 +186,13 @@ title(paste("Núcleo familiar de",direccion), sub = "Copyright © 2018 UNALMED",
       cex.main = 1.5,   font.main= 4, col.main= "black",
       cex.sub = 0.75, font.sub = 3, col.sub = "red")
 
+}
+
+predictor<-function(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10){
+  y<-(as.numeric(coefficients(modeloTransFinal)[2])*a1+as.numeric(coefficients(modeloTransFinal)[3])*a2+
+    as.numeric(coefficients(modeloTransFinal)[4])*a3+as.numeric(coefficients(modeloTransFinal)[5])*a4
+  +as.numeric(coefficients(modeloTransFinal)[6])*a5+as.numeric(coefficients(modeloTransFinal)[7])*a6
+  +as.numeric(coefficients(modeloTransFinal)[8])*a7+as.numeric(coefficients(modeloTransFinal)[9])*a8
+  +as.numeric(coefficients(modeloTransFinal)[10])*a9+as.numeric(coefficients(modeloTransFinal)[11])*a10)
+  return(round(y))
 }
