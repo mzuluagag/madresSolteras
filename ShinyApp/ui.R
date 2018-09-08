@@ -1,13 +1,10 @@
 library(shiny)
 
 shinyUI(fluidPage(
-  
   titlePanel("Madres solteras en Colombia"),
   navlistPanel(
     tabPanel("Visualizacion de hogar como red",
-             load("www/FamNet"),
-             load("www/HogaresMadresSolteras"),
-             load("www/total"),
+             load(file="www/HogaresMadresSolteras",envir = .GlobalEnv),
              titlePanel("Seleccione el hogar que desea visualizar"),
              selectInput("db",choices = total$DIRECTORIO,label = NULL),
              actionButton("apply",label = "Generar grafo"),
