@@ -3,7 +3,7 @@ library(DataCombine)
 library(MASS)
 library(nnet)
 library(igraph)
-setwd("D:/Documents/GitHub/madresSolteras")
+setwd("C:/Users/user/Documents/GitHub/madresSolteras")
 ComposicionHogar<-read.csv2("Caracteristicas y composicion del hogar/Características y composición del hogar.csv", header=T, sep=",")
 #Seleccionar mujeres
 Mujeres<-data.frame(ComposicionHogar)
