@@ -1,8 +1,5 @@
 Orden del día:
-Cambiar transformación
-Generar nuevas variables(qué variables queremos?)
-Limpiar duplicados de Orden en comp(ej 6000823)
-Pasar el word a r markdown
-Chapalear en Shiny
-Crear redes(igraph)
+Pasar el word a r markdown (Completar)
+	Crear función que agarre modelo y genere las predicciones de 2016
+Chapalear en Shiny (Hacerlo más bonito)
 Video promocional

@@ -2,39 +2,38 @@ library(shiny)
 
 shinyUI(fluidPage(
   titlePanel("Madres solteras en Colombia"),
+  load("www/LastPredictor",envir = .GlobalEnv),
   navlistPanel(
     tabPanel("Visualizacion de hogar como red",
-             load(file="www/HogaresMadresSolteras",envir = .GlobalEnv),
              titlePanel("Seleccione el hogar que desea visualizar"),
              selectInput("db",choices = total$DIRECTORIO,label = NULL),
              actionButton("apply",label = "Generar grafo"),
              plotOutput("grafo")
              ),
     tabPanel("Modelo de prediccion de satisfaccion",
-             load("www/modeloLimpio",envir = .GlobalEnv),
              titlePanel("Ingrese los datos a continuacion para realizar la prediccion de satisfaccion"),hr(),
              verticalLayout(
                numericInput("var1",
                             label = "Ingrese el nivel de satisfaccion que tienes con sus ingresos actualmente, siento 10 totalmente satisfecho y 0 totalmente insatisfecho",
-                            max = 10,min = 0,step = 1,value = 10),
+                            max = 10,min = 0,step = 1,value = 10),hr(),
                numericInput("var2",
                             label = "Ingrese el nivel de satisfaccion que tienes con su salud actualmente, siento 10 totalmente satisfecho y 0 totalmente insatisfecho",
-                            max = 10,min = 0,step = 1,value = 10),
+                            max = 10,min = 0,step = 1,value = 10),hr(),
                numericInput("var3",
                             label = "Ingrese el nivel de satisfaccion que tienes con su seguridad actualmente, siento 10 totalmente satisfecho y 0 totalmente insatisfecho",
-                            max = 10,min = 0,step = 1,value = 10),
+                            max = 10,min = 0,step = 1,value = 10),hr(),
                numericInput("var4",
                             label = "Ingrese el nivel de satisfaccion que tienes con su trabajo actualmente, siento 10 totalmente satisfecho y 0 totalmente insatisfecho",
-                            max = 10,min = 0,step = 1,value = 10),
+                            max = 10,min = 0,step = 1,value = 10),hr(),
                numericInput("var5",
                             label = "Ingrese el nivel de felicidad que sintio el día de ayer, siento 10 muy feliz y 0 muy infeliz",
-                            max = 10,min = 0,step = 1,value = 10),
+                            max = 10,min = 0,step = 1,value = 10),hr(),
                numericInput("var6",
                             label = "Ingrese que tanto considera que las cosas que hace en su vida actualmente valen la pena, siento 10 valen la pena toltalmente y 0 no valen la pena",
-                             max = 10,min = 0,step = 1,value = 10),
+                             max = 10,min = 0,step = 1,value = 10),hr(),
                selectInput("var7",
                            label = "Actualmente las condiciones de vida en su hogar son:",
-                           choices = c("Muy buenas","Buenas","Regulares","Malas")),
+                           choices = c("Muy buenas","Buenas","Regulares","Malas")),hr(),
                selectInput("var8",
                            label = "La vivienda ocupada por este hogar es:",
                            choices = c("Propia, totalmente pagada",
@@ -42,10 +41,10 @@ shinyUI(fluidPage(
                                        "En arriendo o subarriendo",
                                        "Con permiso del propietario, sin pago alguno (usufructuario)",
                                        "Posesion sin titulo (ocupante de hecho)",
-                                       "Propiedad colectiva")),
+                                       "Propiedad colectiva")),hr(),
                numericInput("var9",
                             label = "Ingrese la edad promedio de sus hijos (temporal)",
-                            max = 100,min = 0,step = 0.1,value = 10),
+                            max = 100,min = 0,step = 0.1,value = 10),hr(),
                selectInput("var10",
                            label = "Ingrese el estrato para la tarifa de servicios publicos",
                            choices = c("1. Bajo - Bajo",
@@ -53,12 +52,11 @@ shinyUI(fluidPage(
                                        "3. Medio - Bajo",
                                        "4. Medio",
                                        "5. Medio - Alto",
-                                       "6. Alto",
-                                       "9 No conoce el estrato o no cuenta con recibo de pago.",
-                                       "0 Recibos sin estrato o el servicio es pirata")),
+                                       "6. Alto"
+                                       )),hr(),
 
 
-               actionButton("apply2",label = "Generar prediccion")
+               actionButton("apply2",label = "Generar prediccion"),hr(),hr()
               ),
              verbatimTextOutput("satisfaccion")
              )
