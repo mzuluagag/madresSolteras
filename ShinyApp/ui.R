@@ -1,5 +1,6 @@
 library(shiny)
 library(shinythemes)
+library(shinyBS)
 
 shinyUI(fluidPage(
   theme = shinytheme("darkly"),
@@ -65,11 +66,13 @@ shinyUI(fluidPage(
                                        
                                        
                                        actionButton("apply2",label = "Generar prediccion", width = "100%", class = "btn btn-primary")
-                                     ),
-                                   verbatimTextOutput("satisfaccion"))
-                                   )
+                                     )
+                                   ),
+                                    bsModal("modalResult", "", "apply2", size = "large",
+                                            h3("Resultado de la prediccion para los valores ingresados"),
+                                    verbatimTextOutput("satisfaccion"))
                                  )
                   
            )
   )
-)
+))
