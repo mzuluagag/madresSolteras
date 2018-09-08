@@ -1,8 +1,8 @@
 library(shiny)
 
 shinyUI(fluidPage(
+  load(file= "www/LastPredictor",envir = .GlobalEnv,verbose = FALSE),
   titlePanel("Madres solteras en Colombia"),
-  load("www/LastPredictor",envir = .GlobalEnv),
   navlistPanel(
     tabPanel("Visualizacion de hogar como red",
              titlePanel("Seleccione el hogar que desea visualizar"),
@@ -11,25 +11,25 @@ shinyUI(fluidPage(
              plotOutput("grafo")
              ),
     tabPanel("Modelo de prediccion de satisfaccion",
-             titlePanel("Ingrese los datos a continuacion para realizar la prediccion de satisfaccion"),hr(),
+             titlePanel("Ingrese los datos a continuacion para realizar la prediccion de satisfaccion."),hr(),
              verticalLayout(
                numericInput("var1",
-                            label = "Ingrese el nivel de satisfaccion que tienes con sus ingresos actualmente, siento 10 totalmente satisfecho y 0 totalmente insatisfecho",
+                            label = "Ingrese el nivel de satisfaccion que tiene con sus ingresos actualmente, siendo 10 totalmente satisfecho y 0 totalmente insatisfecho.",
                             max = 10,min = 0,step = 1,value = 10),hr(),
                numericInput("var2",
-                            label = "Ingrese el nivel de satisfaccion que tienes con su salud actualmente, siento 10 totalmente satisfecho y 0 totalmente insatisfecho",
+                            label = "Ingrese el nivel de satisfaccion que tiene con su salud actualmente, siendo 10 totalmente satisfecho y 0 totalmente insatisfecho.",
                             max = 10,min = 0,step = 1,value = 10),hr(),
                numericInput("var3",
-                            label = "Ingrese el nivel de satisfaccion que tienes con su seguridad actualmente, siento 10 totalmente satisfecho y 0 totalmente insatisfecho",
+                            label = "Ingrese el nivel de satisfaccion que tiene con su seguridad actualmente, siendo 10 totalmente satisfecho y 0 totalmente insatisfecho.",
                             max = 10,min = 0,step = 1,value = 10),hr(),
                numericInput("var4",
-                            label = "Ingrese el nivel de satisfaccion que tienes con su trabajo actualmente, siento 10 totalmente satisfecho y 0 totalmente insatisfecho",
+                            label = "Ingrese el nivel de satisfaccion que tiene con su trabajo actualmente, siendo 10 totalmente satisfecho y 0 totalmente insatisfecho.",
                             max = 10,min = 0,step = 1,value = 10),hr(),
                numericInput("var5",
-                            label = "Ingrese el nivel de felicidad que sintio el día de ayer, siento 10 muy feliz y 0 muy infeliz",
+                            label = "Ingrese el nivel de felicidad que sintio el día de ayer, siendo 10 muy feliz y 0 muy infeliz.",
                             max = 10,min = 0,step = 1,value = 10),hr(),
                numericInput("var6",
-                            label = "Ingrese que tanto considera que las cosas que hace en su vida actualmente valen la pena, siento 10 valen la pena toltalmente y 0 no valen la pena",
+                            label = "Ingrese que tanto considera que las cosas que hace en su vida actualmente valen la pena, siendo 10 que vale la pena toltalmente y 0 que no valen la pena.",
                              max = 10,min = 0,step = 1,value = 10),hr(),
                selectInput("var7",
                            label = "Actualmente las condiciones de vida en su hogar son:",

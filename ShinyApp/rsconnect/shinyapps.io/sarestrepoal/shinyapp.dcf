@@ -1,0 +1,10 @@
+name: shinyapp
+title:
+username:
+account: sarestrepoal
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 429810
+bundleId: 1575712
+url: https://sarestrepoal.shinyapps.io/shinyapp/
+when: 1536389689.29348
