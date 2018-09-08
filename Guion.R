@@ -97,7 +97,7 @@ total<-subset(total,total$P1896!=99)
 total<-subset(total, total$I_HOGAR!=0)
 # total$DIRECTORIO<-NULL
 # total$ORDEN<-NULL
-attach(total)
+
 
 # modeloTotal<-lm(P1895~P6040+P1896+P1897+P1898+P1899+P1901+P1902+P1903+P1904+P1905+P9030+P5230+P9090+P5095+P1084+P6240+P8587+P6127+P6142+I_HOGAR+CANT_HOG_COMPLETOS+P8520S1A1,data=total,na.action=na.exclude)
 # modeloTotalBack<-stepAIC(object=modeloTotal, trace=FALSE, direction="backward", k=2)
@@ -137,10 +137,10 @@ total<-cbind2(total,vechijos)
 total$P6083S1<-NULL
 colnames(total)[27]<-"cantidad_hijos"
 colnames(total)[26]<-"prom_edad_hijos"
-
-modeloTotal<-lm(P1895~P6040+P1896+P1897+P1898+P1899+P1901+P1902+P1903+P1904+P1905+P9030+P5230+P9090+P5095+P1084+P6240+P8587+P6127+P6142+I_HOGAR+CANT_HOG_COMPLETOS+P8520S1A1+prom_edad_hijos+edad_hijos,data=total,na.action=na.exclude)
+attach(total)
+modeloTotal<-lm(P1895~P6040+P1896+P1897+P1898+P1899+P1901+P1902+P1903+P1904+P1905+P9030+P5230+P9090+P5095+P1084+P6240+P8587+P6127+P6142+I_HOGAR+CANT_HOG_COMPLETOS+P8520S1A1+prom_edad_hijos+cantidad_hijos,data=total,na.action=na.exclude)
 modeloTotalBack<-stepAIC(object=modeloTotal, trace=FALSE, direction="backward", k=2)
-modeloLimpio<-lm(P1895~P1896+P1897+P1898+P1899+P1901+P1905+P9030+P5095+prom_edad_hijos+edad_hijos,data=total,na.action=na.exclude)
+modeloLimpio<-lm(P1895~P1896+P1897+P1898+P1899+P1901+P1905+P9030+P5095+prom_edad_hijos+P8520S1A1,data=total,na.action=na.exclude)
 
 
 
@@ -175,7 +175,7 @@ for (j in 1:nrow(transitoria)){
 g1<-graph(coorgraph)
 
 plot(g1,edge.width=2,edge.arrow.size=0,edge.color="gray",edge.label.font=3,edge.lty="solid",
-     vertex.color="pink",vertex.shape=c("circle","square"),
+     vertex.color="pink",vertex.shape=c("square","circle"),
      vertex.size=20,vertex.label.font=4,
      vertex.frame.color="black",vertex.label.color="black",frame=TRUE,vertex.label.dist=0,
      vertex.label.cex=1, edge.curved=0.2,edge.label=leyendas)
