@@ -4,12 +4,14 @@ library(shinythemes)
 shinyUI(fluidPage(
   theme = shinytheme("darkly"),
   load(file= "www/LastPredictor",envir = .GlobalEnv,verbose = FALSE),
-  fluidRow(column(12, navbarPage("Madres solteras en Colombia", 
+  fillRow(navbarPage("Madres solteras en Colombia", 
                                  tabPanel("Visualizacion de hogar como red",
-                                   titlePanel("Seleccione el hogar que desea visualizar"),
-                                   selectInput("db",choices = total$DIRECTORIO,label = NULL),
-                                   actionButton("apply",label = "Generar grafo"),
-                                   plotOutput("grafo")
+                                          fluidRow(column(6, h1("Seleccione el hogar que desea visualizar", align = "center"), offset = 3)),
+                                          hr(),
+                                          fluidRow(
+                                            column(2, offset = 4, selectInput("db",choices = total$DIRECTORIO,label = NULL)),
+                                            column(2, offset = 1, actionButton("apply",label = "Generar grafo"))),
+                                          fluidRow(column(6, plotOutput("grafo"), offset = 3))
                                   ),
                                  tabPanel("Modelo de prediccion de satisfaccion",
                                    titlePanel("Ingrese los datos a continuacion para realizar la prediccion de satisfaccion."),hr(),
@@ -62,7 +64,7 @@ shinyUI(fluidPage(
                                    verbatimTextOutput("satisfaccion")
                                    )
                                  )
-                  )
+                  
            )
   )
 )
