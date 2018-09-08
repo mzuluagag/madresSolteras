@@ -1,9 +1,20 @@
 library(shiny)
-library(gapminder)
 
 shinyServer(function(input, output) {
   output$grafo <- renderPlot(
-    barplot(gapminder$year)#aqui en vez de barplot iria el grafo
+    if(input$apply){
+      isolate({
+        FamNet(input$db)
+      })
+      }
+  )
+  
+  output$satisfaccion <- renderPrint(
+    if (input$apply2) {
+      isolate({
+        modeloLimpio(input$var1)
+      })
+    }
   )
 
   
