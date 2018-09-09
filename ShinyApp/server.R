@@ -24,13 +24,13 @@ output$satisfaccion <- renderText(
       }
       #var8
       auxVar8 <- 6
-      if (input$var8 == "Propia, la estan pagando") {
+      if (input$var8 == "Propia, la están pagando") {
         auxVar8 <- 5
       }else if (input$var8 == "En arriendo o subarriendo") {
         auxVar8 <- 4
       }else if (input$var8 == "Con permiso del propietario, sin pago alguno (usufructuario)") {
         auxVar8 <- 3
-      }else if (input$var8 == "Posesion sin titulo (ocupante de hecho)") {
+      }else if (input$var8 == "Posesión sin título (ocupante de hecho)") {
         auxVar8 <- 2
       }else if (input$var8 == "Propiedad colectiva") {
         auxVar8 <- 1
