@@ -188,7 +188,7 @@ plot(g1,edge.width=2,edge.arrow.size=0,edge.color="gold",edge.label.color="steel
 title(paste("Núcleo familiar de",direccion), sub = "Copyright © 2018 UNALMED",
       cex.main = 1.5, family="serif",font.main= 2, col.main= "black",
       cex.sub = 0.75, font.sub = 3, col.sub = "red")
-legend(-3, -1, legend=c("Jefe de hogar", "Familiar del jefe"),
+legend(-0.5, -1.2, legend=c("Jefe de hogar", "Familiar del jefe"),
        pch = c(19,19),col=c("gold","pink"), cex=0.8,pt.cex=1.5)
 
 

@@ -69,7 +69,7 @@ shinyUI(fluidPage(
                                      )
                                    ),
                                     bsModal("modalResult", "", "apply2", size = "large",
-                                            h3("Resultado de la prediccion para los valores ingresados"),
+                                            h3("Se estima que su satisfacción con la vida es de:"),
                                     verbatimTextOutput("satisfaccion"))
                                  )
                   
