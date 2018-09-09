@@ -5,7 +5,7 @@ library(shinyBS)
 shinyUI(fluidPage(
   theme = shinytheme("darkly"),
   load(file= "www/LastPredictor",envir = .GlobalEnv,verbose = FALSE),
-  fillRow(navbarPage("Madres solteras en Colombia", 
+  fillRow(navbarPage("MOSAPRE", 
                                  tabPanel("Visualización de hogar como red",
                                           fluidRow(column(6, h1("Seleccione el hogar que desea visualizar", align = "center"), offset = 3)),
                                           hr(),
@@ -68,7 +68,7 @@ shinyUI(fluidPage(
                                        actionButton("apply2",label = "Generar predicción", width = "100%", class = "btn btn-primary")
                                      )
                                    ),
-                                    bsModal("modalResult", "", "apply2", size = "large",
+                                    bsModal("modalResult", "Predicción", "apply2", size = "large",
                                             h3("Se estima que su satisfacción con la vida es de:"),
                                     verbatimTextOutput("satisfaccion"))
                                  )
