@@ -322,10 +322,13 @@ Considera que los ingresos que tiene son suficientes
 Además de estas variables, se creo la variable “Edad promedio de los hijos con los que vive”.<br>A continuación veremos un pequeño análisis exploratorio de los datos:
 </p>
 <pre class="r"><code>#Agregar acá plot de vale la pena lo que hace, nivel de aducación alcanzado, se considera pobre y ingresos suficientes contra ingresos mensuales.</code></pre>
+<h3>
+<b>Selección de variables finales para la regresión</b>
+</h3>
 <p style="font-size:20px">
 Posteriormente se aplicó a estas variables se les aplicó el <a href 0 "https: www.maximaformacion.es blog-dat seleccion-paso-a-paso-e-importancia-de-los-predictores ">método de selección hacia atrás y hacia adelante</a>, ambos métodos nos devorvieron la misma seleccíon para el modelo predictor:
 </p>
-<ul>
+<ul style="font-size:20px">
 <li>
 Nivel de satisfacción general con los ingresos
 <li>
@@ -347,6 +350,21 @@ Edad promedio de los hijos con los que vive
 <li>
 Estrato
 </ul>
+<p style="font-size:20px">
+Las primeras 6 de estas variables, tienen una escala de 0 a 10 donde 10 es lo que representa “mayor satisfacción” y 0 lo contrario, las otras cuatro variables, tienen unas escalas categoricas diferentes, a las que se les realiza unas simples transformaciones para representarlas como números dordenados donde el mayor número sea lo que represente mayor satisfacción.<br>Después de todo esto, se le aplica el modelo de predicción lineal a estas diez variables y a su variable respuesta que es la satisfacción general con la vida, para de esta forma obtener un modelo de predicción con una ajuste de <b>4.6…(ojo, corregir acá santiago) agregar análisis estadístico profesional</b>.
+</p>
+<h3>
+<b>Aplicación web</b>
+</h3>
+<p style="font-size:20px">
+Para este trabajo, se nos propuso realizar una aplicación web, que tuviera dos funcionalidades, la primera es poder seleccionar un hogar y visualizarlo como un red en la que se muestre la estructura familiar, la segunda que debe tener, es que con base en el modelo de predicción explicado enteriormente, la persona que ingrese a la aplicación, al ingresar los datos que esta pide, se genere una predicción de la satisfacción.<br>A la aplicación se puede acceder por medio del siguiente <a href="https://sarestrepoal.shinyapps.io/shinyapp/">enlace</a>.<br>La aplicación esta enfocada en el impacto que genera en los hijos de madres solteras, el hecho que crecer en un ambiente monoparentas, en el siguiente <a href="https://www.ijsr.net/archive/v3i9/U0VQMTQ0MA%3D%3D.pdf">estudio</a>, se puede ver cómo esto afecta y en que los niños que crecen en este ambiente estén más propensos a la delincuencia en la adultez.
+</p>
+<h3>
+<b>Video promocional</b>
+</h3>
+<p style="font-size:20px">
+Para este trabajo también se nos propuso realizar un video promocional, se puede ver en el siguiete <a href="https://www.youtube.com/watch?v=9EksTN2Cg_E&amp;rel=0">enlace</a>
+</p>
 <p style="font-size:20px">
 </p>
 
