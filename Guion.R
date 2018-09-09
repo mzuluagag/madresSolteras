@@ -168,17 +168,18 @@ for (j in 1:nrow(transitoria)){
       if(transitoria$ORDEN[j]==transitoria$P6071S1[k]){
         coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
         leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es cónyuge de",transitoria$ORDEN[k])))
-  }
-    }
+        }
+      }
+    
+    
     if (transitoria$P6081[k]==1){
       if(transitoria$ORDEN[j]==transitoria$P6081S1[k]){
         coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
         leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es padre de",transitoria$ORDEN[k])))
       }
-    }
+    } 
   }
 }
-
 g1<-graph(coorgraph)
 plot(g1,edge.width=2,edge.arrow.size=0,edge.color="gold",edge.label.color="steelblue4",edge.label.font=3,edge.lty="solid",
      vertex.color=c("gold",rep("pink",length(coorgraph)-1)),vertex.shape="sphere",
