@@ -35,6 +35,13 @@ output$satisfaccion <- renderText(
       }else if (input$var8 == "Propiedad colectiva") {
         auxVar8 <- 1
       }
+      #var9
+      auxVar9<-0
+      auxVar9<-strsplit(input$var9,",")
+      auxVar9<-unlist(auxVar9)
+      auxVar9<-as.numeric(auxVar9)
+      auxVar9<-mean(auxVar9)
+      
       #var10
       auxVar10 <- 1
       if (input$var10 == "2. Bajo") {
@@ -49,7 +56,7 @@ output$satisfaccion <- renderText(
         auxVar10 <- 6
       }
 
-     predictor(input$var1,
+     res<-predictor(input$var1,
              input$var2,
              input$var3,
              input$var4,
@@ -57,8 +64,12 @@ output$satisfaccion <- renderText(
              input$var6,
              auxVar7,
              auxVar8,
-             input$var9,
+             auxVar9,
              auxVar10)
+     if(res>10){
+       res<-10
+     }
+     res
   })
 }
  )

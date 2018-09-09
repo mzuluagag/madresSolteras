@@ -5,8 +5,8 @@ account: sarestrepoal
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 429810
-bundleId: 1576595
+bundleId: 1577087
 url: https://sarestrepoal.shinyapps.io/shinyapp/
-when: 1536469344.03304
+when: 1536511079.47238
 asMultiple: FALSE
 asStatic: FALSE
