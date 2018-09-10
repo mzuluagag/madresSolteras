@@ -113,7 +113,7 @@ En la tabla “Características y composición del hogar”, se encuentra una pr
   <li>Considera que los ingresos que tiene son suficientes
 </ul>
 <p style = "font-size:20px" align="justify">
-Además de estas variables, se creó la variable "Edad promedio de los hijos con los que vive".<hr>
+Además de estas variables, se creó la variable "Edad promedio de los hijos con los que vive" y la edad promedio de estos hijos.<br>Además se escogió la variable "Edad a la que tuvo el primer hijo", pero después de revisarla, nos dimos cuenta que tenía gran cantidad de datos erroneos, por lo que decidimos excluirla del modelo.<hr>
 </p>
 <p style = "font-size:20px" align="justify">
 A continuación veremos un pequeño análisis exploratorio de los datos:
@@ -274,9 +274,9 @@ Se sigue un procedimiento similar aplicándolo a distintas combinaciones de vari
 Prosiguiendo con la búsqueda del mejor modelo posible, procede a realizarse una regresión logística multinomial. Al aplicar este modelo, se obtuvo un missclasification error(Error de el modelo respecto a los datos originales) de el 57%, por lo que se ve que es un error mayor al modelo de regresión lineal clásico inicial, por lo tanto no se descarta el modelo inicial y procedemos a usarlo cómo el modelo final ya que fue el mejor que se pudo calcular.
 </p>
 
+<hr>
+<h3><b>Estimación de la satisfacción para las madres solteras en el año 2016</b></h3>
 ```{r, echo=FALSE}
-
-
 attach(total2016)
 
 count<-table(total2016$SatisfaccionEst)
@@ -286,11 +286,8 @@ geom_bar(stat = "identity",colour="midnightblue",fill="midnightblue") +
 geom_text(aes(label = sprintf("%.2f%%", Freq/sum(Freq) * 100)), 
 vjust = -.5)+labs(x="Satisfacción estimada",y="Frecuencia",title="Satisfacción de vida - Madres solteras jefe de hogar")
 summary(SatisfaccionEst)
-
-
-
-
 ```
+
 
 ```{r,echo=TRUE}
 mean(SatisfaccionEst) #Media
@@ -304,7 +301,7 @@ sd(SatisfaccionEst)^2 #Varianza
 
 
 <p style = "font-size:20px" align="justify">
-Aparentemente se puede visualizar que los datos siguen una distribución normal. Los datos se están centrado alrededor de la media que es 5.34 aproximádamente, con varianza 1.04; por lo tanto se puede entender y ver que la mayoría de los datos están alrededor a la media entre los valores 4 y 7.
+Aparentemente se puede visualizar que los datos siguen una distribución normal. Los datos están centrados alrededor de la media que es 5.34 aproximádamente, con varianza 1.04; por lo tanto se puede entender y ver que la mayoría de los datos están alrededor a la media entre los valores 4 y 7.
 </p>
 
 
