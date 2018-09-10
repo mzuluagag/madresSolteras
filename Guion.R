@@ -100,22 +100,7 @@ total<-subset(total, total$P8520S1A1!=Inf)
 total<-subset(total,total$P1896!=99)
 total<-subset(total, total$I_HOGAR!=0)
 total<-subset(total, total$P8520S1A1!=8|total$P8520S1A1!=9)
-# total$DIRECTORIO<-NULL
-# total$ORDEN<-NULL
 
-
-# modeloTotal<-lm(P1895~P6040+P1896+P1897+P1898+P1899+P1901+P1902+P1903+P1904+P1905+P9030+P5230+P9090+P5095+P1084+P6240+P8587+P6127+P6142+I_HOGAR+CANT_HOG_COMPLETOS+P8520S1A1,data=total,na.action=na.exclude)
-# modeloTotalBack<-stepAIC(object=modeloTotal, trace=FALSE, direction="backward", k=2)
-# empty.data<-lm(P1895~1,data=total)
-# objetivo<-formula(P1895~P6040+P1896+P1897+P1898+P1899+P1901+P1902+P1903+P1904+P1905+P9030+P5230+P9090+P5095+P1084+P6240+P8587+P6127+P6142+I_HOGAR+CANT_HOG_COMPLETOS+P8520S1A1)
-# modeloTotalForward<-stepAIC(empty.data,scope=objetivo,direction="forward",trace=FALSE)
-# modeloTotalBoth<-stepAIC(empty.data,scope=objetivo,direction="both",trace=FALSE)
-# modeloLimpio<-lm(P1895~P1896+P1901+P1905+P1898+P9030+P1899+P5095+P1897+P6040,data=total,na.action=na.exclude)
-
-# modeloMultinomLog<-multinom(P1895~P1896+P1901+P1905+P1898+P9030+P1899+P5095+P1897+P6040,data=total)
-# testtable<-table(predict(modeloMultinomLog),total$P1895)
-# Missclassification<-1-sum(diag(testtable))/sum(testtable)
-# #57% de error de clasificación -->43% de éxito del modelo(regular)
 CheckDir<-0
 vecprom<-c()
 vechijos<-c()
@@ -157,18 +142,20 @@ FamNet<-function(direccion){
   transitoria<-subset(transitoria,HogaresMadresSolteras$DIRECTORIO==direccion)
   coorgraph<-c()
   leyendas<-c()
+  color<-c()
   for (j in 1:nrow(transitoria)){
     for (k in 1:nrow(transitoria)){
       if (transitoria$P6083[k]==1){
         if(transitoria$ORDEN[j]==transitoria$P6083S1[k]){
           coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
-          leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es madre de",transitoria$ORDEN[k])))
+          color<-append(color,1)
         }
       }
       if (transitoria$P6071[k]==1){
         if(transitoria$ORDEN[j]==transitoria$P6071S1[k]){
           coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
-          leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es cónyuge de",transitoria$ORDEN[k])))
+          color<-append(color,2)
+          
         }
       }
       
@@ -176,68 +163,52 @@ FamNet<-function(direccion){
       if (transitoria$P6081[k]==1){
         if(transitoria$ORDEN[j]==transitoria$P6081S1[k]){
           coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
-          leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es padre de",transitoria$ORDEN[k])))
+          color<-append(color,3)
+          
         }
       }
+      
     }
+    if(transitoria$P6051[j]==7){
+      coorgraph<-append(coorgraph,c(1,transitoria$ORDEN[j]))
+      color<-append(color,4)
+    }
+    leyendas<-append(leyendas,transitoria$P6051[j])
   }
+  color[color==1]<-"gold"
+  color[color==2]<-"red"
+  color[color==3]<-"green"
+  color[color==4]<-"black"
+  leyendas[leyendas==1]<-"Jefe(a) de hogar"
+  leyendas[leyendas==2]<-"Cónyuge"
+  leyendas[leyendas==3]<-"Hijo(a)"
+  leyendas[leyendas==4]<-"Nieto(a)"
+  leyendas[leyendas==5]<-"Padre/Madre"
+  leyendas[leyendas==6]<-"Suegro(a)"
+  leyendas[leyendas==7]<-"Hermano(a)"
+  leyendas[leyendas==8]<-"Yerno/Nuera"
+  leyendas[leyendas==9]<-"Otro pariente del jefe"
+  leyendas[leyendas==10]<-"Empleado(a) del servicio doméstico"
+  leyendas[leyendas==11]<-"Parientes del servicio doméstico"
+  leyendas[leyendas==12]<-"Trabajador"
+  leyendas[leyendas==13]<-"Pensionista"
+  leyendas[leyendas==14]<-"Otro pariente"
+
+  
   g1<-graph(coorgraph)
-  plot(g1,edge.width=2,edge.arrow.size=0,edge.color="gold",edge.label.color="steelblue4",edge.label.font=3,edge.lty="solid",
-       vertex.color=c("gold",rep("pink",length(coorgraph)-1)),vertex.shape="sphere",
-       vertex.size=20,vertex.label.font=4,
+  plot(g1,edge.width=2,edge.arrow.size=0,edge.color=color,edge.label.color="steelblue4",edge.label.font=3,edge.lty="solid",
+       vertex.color=c("gold",rep("pink",length(coorgraph)-1)),vertex.shape="rectangle",
+       vertex.size=100,vertex.label.font=4,vertex.label=leyendas,
        vertex.frame.color="black",vertex.label.color="black",frame=TRUE,vertex.label.dist=0,
-       vertex.label.cex=1, edge.curved=0.4,edge.label=leyendas,edge.label.family="sans")
+       vertex.label.cex=1, edge.curved=0.4,edge.label.family="sans")
   title(paste("Núcleo familiar de",direccion), sub = "Copyright © 2018 UNALMED",
         cex.main = 1.5, family="serif",font.main= 2, col.main= "black",
         cex.sub = 0.75, font.sub = 3, col.sub = "red")
-  legend(-0.5, -1.2, legend=c("Jefe de hogar", "Familiar del jefe"),
-         pch = c(19,19),col=c("gold","pink"), cex=0.8,pt.cex=1.5)
+  legend(-3, -0.5, legend=c("Madre-hijo","Cónyuge","Padre-hijo","Hermano"),
+         pch = c(19,19),col=c("gold","red","green","black"), cex=0.8,pt.cex=1.5)
   
   
 }
-# FamNet<-function(direccion){
-# transitoria<-data.frame(HogaresMadresSolteras)
-# transitoria<-subset(transitoria,HogaresMadresSolteras$DIRECTORIO==direccion)
-# coorgraph<-c()
-# leyendas<-c()
-# for (j in 1:nrow(transitoria)){
-#   for (k in 1:nrow(transitoria)){
-#     if (transitoria$P6083[k]==1){
-#       if(transitoria$ORDEN[j]==transitoria$P6083S1[k]){
-#         coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
-#         leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es madre de",transitoria$ORDEN[k])))
-#       }
-#     }
-#     if (transitoria$P6071[k]==1){
-#       if(transitoria$ORDEN[j]==transitoria$P6071S1[k]){
-#         coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
-#         leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es cónyuge de",transitoria$ORDEN[k])))
-#         }
-#       }
-#     
-#     
-#     if (transitoria$P6081[k]==1){
-#       if(transitoria$ORDEN[j]==transitoria$P6081S1[k]){
-#         coorgraph<-append(coorgraph,c(transitoria$ORDEN[j],transitoria$ORDEN[k]))
-#         leyendas<-append(leyendas,c(paste(transitoria$ORDEN[j],"es padre de",transitoria$ORDEN[k])))
-#       }
-#     }
-#   }
-# }
-# g1<-graph(coorgraph)
-# plot(g1,edge.width=2,edge.arrow.size=0,edge.color="gold",edge.label.color="steelblue4",edge.label.font=3,edge.lty="solid",
-#      vertex.color=c("gold",rep("pink",length(coorgraph)-1)),vertex.shape="sphere",
-#      vertex.size=20,vertex.label.font=4,
-#      vertex.frame.color="black",vertex.label.color="black",frame=TRUE,vertex.label.dist=0,
-#      vertex.label.cex=1, edge.curved=0.4,edge.label=leyendas,edge.label.family="sans")
-# title(paste("Núcleo familiar de",direccion), sub = "Copyright © 2018 UNALMED",
-#       cex.main = 1.5, family="serif",font.main= 2, col.main= "black",
-#       cex.sub = 0.75, font.sub = 3, col.sub = "red")
-# legend(-0.5, -1.2, legend=c("Jefe de hogar", "Familiar del jefe"),
-#        pch = c(19,19),col=c("gold","pink"), cex=0.8,pt.cex=1.5)
-# 
-# 
-# }
 
 predictor<-function(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10){
   y<-as.numeric(coefficients(modeloTransFinal)[2]*a1+coefficients(modeloTransFinal)[3]*a2+
