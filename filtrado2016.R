@@ -1,4 +1,3 @@
-rm(list=ls())
 library(DataCombine)
 library(MASS)
 #Limpieza bases 2016
