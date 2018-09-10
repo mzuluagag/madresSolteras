@@ -204,7 +204,7 @@ FamNet<-function(direccion){
   title(paste("Núcleo familiar de",direccion), sub = "Copyright © 2018 UNALMED",
         cex.main = 1.5, family="serif",font.main= 2, col.main= "black",
         cex.sub = 0.75, font.sub = 3, col.sub = "red")
-  legend(-3, -0.5, legend=c("Madre-hijo","Cónyuge","Padre-hijo","Hermano"),
+  legend(-2.7, -0.5, legend=c("Madre-hijo","Cónyuge","Padre-hijo","Hermano"),
          pch = c(19,19),col=c("gold","red","green","black"), cex=0.8,pt.cex=1.5)
   
   
