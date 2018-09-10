@@ -10,7 +10,7 @@ shinyUI(fluidPage(
                                           fluidRow(column(6, h1("Seleccione el hogar que desea visualizar", align = "center"), offset = 3)),
                                           hr(),
                                           fluidRow(
-                                            column(2, offset = 4, selectInput("db",choices = total$DIRECTORIO,label = NULL)),
+                                            column(2, offset = 4, selectInput("db",choices = unique(HogaresMadresSolteras$DIRECTORIO),label = NULL)),
                                             column(2, offset = 1, actionButton("apply",label = "Generar grafo", class = "btn btn-primary"))),
                                           fluidRow(column(6, plotOutput("grafo"), offset = 3))
                                   ),
