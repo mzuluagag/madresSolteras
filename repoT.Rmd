@@ -7,20 +7,20 @@
 <h3 align="center">Facultad de minas</h3>
 <h3 align="center">2018-2<br><br></h3>
 
-<h2 align="center"><b>Profesor</b></h2>
+<h2 align="center"><b>Profesor:</b></h2>
 <h3 align="center">Juan David Ospina Arango<br><br></h3>
 
 <h2 align="center"><b>Hecho por:</b></h2>
 <h3 align="center">Santiago Restrepo Álvarez</h3>
 <h3 align="center">Mateo Zuluaga Giraldo</h3>
-<h3 align="center">Sebastian Ramirez Tamayo</h3>
+<h3 align="center">Sebastian Ramírez Tamayo</h3>
 <h3 align="center">David Ossa Saldarriaga</h3>
-<h3 align="center">Daniel Restrepo Mejia<hr><br><br><br></h3>
+<h3 align="center">Daniel Restrepo Mejía<hr><br><br><br></h3>
 
 <h3><b>Introducción:</b></h3>
 <p style = "font-size:20px">
-El siguiente trabajo, es un análisis hecho con base en una encuesta hecha por el 
-DANE, llamada <a href="http://microdatos.dane.gov.co/index.php/catalog/MICRODATOS/about_collection/8/1">"Encuesta Nacional de Calidad de Vida"</a> sobre la que se profundizará más adelante. Los datos y tablas provenientes de esta encuesta, están disponibles para que cualquiera los pueda descargar (los datos están anonimizados) y realizar el análsis que quiera. Para nuestro trabajo, se nos propuso analizar las variables y cuestiones que afectan la satisfacción de las madres solteras en Colombia, y para esto es necesario un breve entendimiento de lo que se interpretará como madre soltera en el trabajo.<br>
+El siguiente trabajo es un análisis hecho con base en una encuesta hecha por el 
+DANE, llamada <a href="http://microdatos.dane.gov.co/index.php/catalog/MICRODATOS/about_collection/8/1">"Encuesta Nacional de Calidad de Vida"</a> sobre la que se profundizará más adelante. Los datos y tablas provenientes de esta encuesta, están disponibles para que cualquiera los pueda descargar (los datos están anonimizados) y realizar el análsis que quiera. Para nuestro trabajo, se nos encomendó analizar las variables y cuestiones que afectan la satisfacción de las madres solteras en Colombia, y para esto es necesario un breve entendimiento de lo que se interpretará como madre soltera en el trabajo.<br>
 </p>
 
 <h3><b>Entendimiento inicial:</b></h3>
@@ -30,28 +30,28 @@ Se denomina <a href="https://es.wikipedia.org/wiki/Madre_soltera">"Madre soltera
 
 <h3><b>Datos técnicos de la encuesta: </b></h3>
 <p style = "font-size:20px">
-Para en análisis hecho, se tomó la encuesta hecha en el año 2017, sin embargo, en la página del <a href="http://microdatos.dane.gov.co/index.php/catalog/MICRODATOS/about_collection/8/1">DANE</a> se puede obtener las encuestas hechas en los siguientes años: 1993, 1997, 2003, 2007, 2008 y de 2010 a 2017. En los primeros años que se hizo la encuesta, esta no se hacía sobre una muestra representativa de todo el territorio nacional, sino que se hacía solo en ciertas ciudades o departamentos, además la encuesta inicialmente no se realizaba anualmente, pero después de los resultados obtenidos en 2010, se tomó la decisión de hacerla con la periodicidad de un año y se añadieron más preguntas con respecto a las encuestas anteriores posteriores, se hicieron cambios estructurales en la encuesta, llegando a la del años 2017 que sería la más actual y fiel para realizar el análisis.<br>Tipo de datos: encuesta por muestreo.<br>Unidades de análisis: corresponden a las viviendas, los hogares y las personas.<br>El alcance de la encuesta está dado por las siguientes temáticas o grupos de preguntas:
+Para el análisis hecho, se tomó la encuesta hecha en el año 2017, sin embargo, en la página del <a href="http://microdatos.dane.gov.co/index.php/catalog/MICRODATOS/about_collection/8/1">DANE</a> se puede obtener las encuestas hechas en los siguientes años: 1993, 1997, 2003, 2007, 2008 y de 2010 a 2017. En los primeros años que se hizo la encuesta, esta no se hacía sobre una muestra representativa de todo el territorio nacional, sino que se hacía solo en ciertas ciudades o departamentos, además la encuesta inicialmente no se realizaba anualmente, pero después de los resultados obtenidos en 2010, se tomó la decisión de hacerla con la periodicidad de un año y se añadieron más preguntas con respecto a las encuestas anteriores posteriores, se hicieron cambios estructurales en la encuesta, llegando a la del años 2017 que sería la más actual y fiel para realizar el análisis.<br>Tipo de datos: Encuesta por muestreo.<br>Unidades de análisis: corresponden a las viviendas, los hogares y las personas.<br>El alcance de la encuesta está dado por las siguientes temáticas o grupos de preguntas:
 </p>
 <ul style = "font-size:20px">
-  <li>Tipo de vivienda y sus características físicas
-  <li>Servicios del hogar
-  <li>Variables demográficas
-  <li>Salud
-  <li>Cuidado de los niños y niñas menores de 5 años
-  <li>Educación (personas de 5 años y más)
-  <li>Fuerza de trabajo (personas de 12 años y más)
-  <li>Trabajo infantil
-  <li>Tenencia y financiación de la vivienda
-  <li>Condiciones de vida del hogar
-  <li>Tecnologías de información y comunicación
+  <li>Tipo de vivienda y sus características físicas.
+  <li>Servicios del hogar.
+  <li>Variables demográficas.
+  <li>Salud.
+  <li>Cuidado de los niños y niñas menores de 5 años.
+  <li>Educación (personas de 5 años y más).
+  <li>Fuerza de trabajo (personas de 12 años y más).
+  <li>Trabajo infantil.
+  <li>Tenencia y financiación de la vivienda.
+  <li>Condiciones de vida del hogar.
+  <li>Tecnologías de información y comunicación.
 </ul>
 <p style = "font-size:20px">
-La encuesta, en total tienes más de 700 variables, haciendo esto casi imposible o por lo menos algo infructuoso el análisis de la totalidad de las variables, así que bajo ciertos criterios estadísticos que mostraremos más adelante se escogieron las variables sobre las que se iba a trabajar para hacer el análisis.
+La encuesta en total tiene más de 700 variables, haciendo casi imposible o por lo menos algo infructuoso el análisis de la totalidad de las variables, así que bajo ciertos criterios estadísticos y sociales que mostraremos más adelante se escogieron las variables sobre las que se iba a trabajar para hacer el análisis.
 </p>
 
 <h3><b>Lecturas afines y entendimiento sociológico del problema: </b></h3>
 <p style = "font-size:20px">
-El fenómeno de las madres solteras en Colombia, es algo que ha venido en aumento en los últimos años, según un artículo publicado por la revista <a href="https://www.fucsia.co/edicion-impresa/articulo/la-realidad-de-las-madres-solteras-en-colombia/61855">FUCSIA</a> en abril de 2015 nos dice que la tercera parte de las mujeres que son madres en Colombia, están solteras y son jefes del hogar y se da también un dato alarmante, que el 31% de estas madres cabeza de hogar se encuentran en situación de extrema pobreza y solo el 8,4% de estas tienes formación profesional. Aunque posiblemente estos datos hayan variado un poco debido a que el artículo ya tienes más de tres años con respecto a la fecha actual, se recomienda leer el artículo.<br>Si bien el objetivo de este trabajo no es analizar la parte sociológica de este asunto, sino puramente la parte estadística, no se puede ser ajeno ya que este es un tema relevante para el progreso del país.<br>Después de esta pequeña reflexión procedemos a la parte técnica del estudio.
+El fenómeno de las madres solteras en Colombia es algo que ha venido en aumento en los últimos años, según un artículo publicado por la revista <a href="https://www.fucsia.co/edicion-impresa/articulo/la-realidad-de-las-madres-solteras-en-colombia/61855">FUCSIA</a> en abril de 2015, nos dice que la tercera parte de las mujeres que son madres en Colombia, están solteras y son jefes del hogar, se da también un dato alarmante: Que el 31% de estas madres cabeza de hogar se encuentran en situación de extrema pobreza y sólo el 8,4% de estas tienen formación profesional. Aunque posiblemente los datos mencionados anteriormente hayan variado un poco debido a que el artículo ya tiene más de tres años con respecto a la fecha actual, se recomienda leerlo.<br>Si bien el objetivo de este trabajo no es analizar la parte sociológica de este asunto, sino puramente la parte estadística, no se puede ser ajeno ya que este es un tema relevante para el progreso del país.<br>Después de esta pequeña reflexión, procedemos a la parte técnica del estudio.
 </p>
 
 <h3><b>Proceso de filtrado de los datos: </b></h3>
@@ -59,25 +59,25 @@ El fenómeno de las madres solteras en Colombia, es algo que ha venido en aument
 Para la encuesta nacional de calidad de vida 2017, el DANE pone a disposición en su página las siguientes 15 tablas:
 </p>
 <ol style = "font-size:20px">
-  <li>Datos de la vivienda
-  <li>Servicios del hogar
-  <li>Características y composición del hogar
-  <li>Salud
-  <li>Atención integral de los niños y niñas menores de 5 años
-  <li>Educación
-  <li>Fuerza de trabajo
-  <li>Tecnologías de información y comunicación
-  <li>Trabajo infantil
-  <li>Tenencia y financiación de la vivienda que ocupa el hogar
-  <li>Tenencia y financiación de la vivienda que ocupa el hogar (escritura personas)
-  <li> Condiciones de vida del hogar y tenencia de bienes (programas)
-  <li> Condiciones de vida del hogar y tenencia de bienes (programas_2)
-  <li> Condiciones de vida del hogar y tenencia de bienes
-  <li> Seguridad alimentaria
+  <li>Datos de la vivienda.
+  <li>Servicios del hogar.
+  <li>Características y composición del hogar.
+  <li>Salud.
+  <li>Atención integral de los niños y niñas menores de 5 años.
+  <li>Educación.
+  <li>Fuerza de trabajo.
+  <li>Tecnologías de información y comunicación.
+  <li>Trabajo infantil.
+  <li>Tenencia y financiación de la vivienda que ocupa el hogar.
+  <li>Tenencia y financiación de la vivienda que ocupa el hogar (escritura personas).
+  <li> Condiciones de vida del hogar y tenencia de bienes (programas).
+  <li> Condiciones de vida del hogar y tenencia de bienes (programas_2).
+  <li> Condiciones de vida del hogar y tenencia de bienes.
+  <li> Seguridad alimentaria.
 </ol>
 
 <p style = "font-size:20px">
-En la tabla “Características y composición del hogar”, se encuentra una pregunta referente al sexo, con la cual se filtran todas las mujeres, posteriormente se encuentra una pregunta sobre el estado civil, en la que se encuentran las siguientes posibles respuestas: “No está casado(a) y vive en pareja hace menos de dos años”, “No está casado(a) y vive en pareja hace dos años o más”, “Está viudo(a)”, “Está separado(a) o divorciado(a)”, “Está soltero(a)” y “Está casado(a)”, al filtrar las mujeres, se filtran las que estén viudas, separadas o divorciadas o las que estén solteras, después de este filtro, solo falta verificar que sean madres de alguien que esté en el mismo núcleo familiar. Se elige sólo analizar los casos de madres solteras, que vivan en el mismo hogar con al menos un hijo, esto principalmente porque con la arquitectura de la encuesta no se pueden hallar las madres solteras que no vivan con algún hijo, además consideramos que tampoco sería un caso de interés.<br>De los 40359 datos iniciales en esta tabla, se halló que 28482 son hogares, a partir de estos datos y siguiendo el procedimiento anterior, se halló que en total hay 943 madres solteras de interés, sobre las cuales se procede a hacer un fuerte análisis con respecto a diversas variables que miraremos a continuación.<br>Nota: es importante mencionar que en la base de datos se encontraron algunas preguntas sin ningún valor lógico o null para algunas madres, así que estas se eliminan para que no afecten los resultados.
+En la tabla “Características y composición del hogar”, se encuentra una pregunta referente al sexo, con la cual se filtran todas las mujeres; posteriormente se encuentra una pregunta sobre el estado civil, en la que se encuentran las siguientes posibles respuestas: “No está casado(a) y vive en pareja hace menos de dos años”, “No está casado(a) y vive en pareja hace dos años o más”, “Está viudo(a)”, “Está separado(a) o divorciado(a)”, “Está soltero(a)” y “Está casado(a)”, al filtrar las mujeres, se filtran las que estén viudas, separadas o divorciadas o las que estén solteras, después de este filtro, sólo falta verificar que sean madres de alguien que esté en el mismo núcleo familiar. Se elige sólo analizar los casos de madres solteras, que vivan en el mismo hogar con al menos un hijo, esto principalmente porque con la arquitectura de la encuesta no se pueden hallar las madres solteras que no vivan con algún hijo, además consideramos que tampoco sería un caso de interés.<br>De los 40.359 datos iniciales en esta tabla, se halló que se tratan 12.877 casas diferentes, a partir de estos datos, se procede a hacer otro filtrado dónde se garantice que la madre sea jefe de hogar, ya que así se garantiza la presencia de algunas variables que más adelante se mencionarán. Al finalizar con el filtrado, se halló que en total hay 943 madres solteras de interés, sobre las cuales se procede a hacer un fuerte análisis con respecto a diversas variables que miraremos a continuación.<br>Nota: es importante mencionar que en la base de datos se encontraron algunas preguntas sin ningún valor lógico o null para algunas madres, así que estas se eliminan para que no afecten los resultados.
 </p>
 
 <h3><b>Las variables o preguntas escogidas para analizar fueron las siguientes: </b></h3>
@@ -108,23 +108,43 @@ En la tabla “Características y composición del hogar”, se encuentra una pr
   <li>Considera que los ingresos que tiene son suficientes
 </ul>
 <p style = "font-size:20px">
-Además de estas variables, se creo la variable "Edad promedio de los hijos con los que vive".<br>A continuación veremos un pequeño análisis exploratorio de los datos:
+Además de estas variables, se creó la variable "Edad promedio de los hijos con los que vive".<br>A continuación veremos un pequeño análisis exploratorio de los datos:
 </p>
-```{r}
-#Agregar acá plot de vale la pena lo que hace, nivel de aducación alcanzado, se considera pobre y ingresos suficientes contra ingresos mensuales.
+```{r,echo=FALSE}
+load("ShinyApp/www/LastPredictor")
+library(ggplot2)
+count<-table(total$P1905)
+count<-as.data.frame(count)
+ggplot(count, aes(x = Var1, y = Freq)) +geom_bar(stat = "identity",colour="steelblue4",fill="steelblue4") +
+geom_text(aes(label = sprintf("%.2f%%", Freq/sum(Freq) * 100)), 
+vjust = -.5)+labs(x="¿Siente que vale la pena lo que hace?",y="Frecuencia",title="Vale la pena lo que hace - Madres solteras jefe de hogar")
+count<-table(total$P8587)
+count<-as.data.frame(count)
+ggplot(count, aes(x = Var1, y = Freq)) +
+geom_bar(stat = "identity",colour="darkorange1",fill="darkorange1") +
+geom_text(aes(label = sprintf("%.2f%%", Freq/sum(Freq) * 100)), 
+vjust = -.5)+labs(x="Nivel máximo de educación alcanzado",y="Frecuencia",title="Nivel eduación - Madres solteras jefe de hogar")
+count<-table(total$P5230)
+count<-as.data.frame(count)
+count$Var1<-c("Si","No")
+ggplot(count, aes(x = Var1, y = Freq)) +
+geom_bar(stat = "identity",colour="lightcoral",fill="lightcoral") +
+geom_text(aes(label = sprintf("%.2f%%", Freq/sum(Freq) * 100)), 
+vjust = -.5)+labs(x="¿Se considera pobre?",y="Frecuencia",title="Pobreza - Madres solteras jefe de hogar")
+
 ```
 
 <h3><b>Selección de variables finales para la regresión</b></h3>
 
 <p style = "font-size:20px">
-Posteriormente se aplicó a estas variables se les aplicó el <a href 0 "https://www.maximaformacion.es/blog-dat/seleccion-paso-a-paso-e-importancia-de-los-predictores/">método de selección hacia atrás y hacia adelante</a>, ambos métodos nos devorvieron la misma seleccíon para el modelo predictor:
+Posteriormente se aplicó a estas variables se les aplicó el <a href 0 "https://www.maximaformacion.es/blog-dat/seleccion-paso-a-paso-e-importancia-de-los-predictores/">método de selección hacia atrás y hacia adelante</a>, ambos métodos nos retornaron la misma selección para el modelo predictor:
 </p>
 <ul style = "font-size:20px">
   <li>Nivel de satisfacción general con los ingresos
   <li>Nivel de satisfacción general con la salud
   <li>Nivel de satisfacción general con seguridad
   <li>Nivel de satisfacción general con el trabajo
-  <li>Qué tan feliz se sintió ayer
+  <li>¿Qué tan feliz se sintió ayer?
   <li>En general siente que vale la pena lo que hace con su vida
   <li>Condiciones generales de vida
   <li>Tenencia de la vivienda ocupada
@@ -133,17 +153,57 @@ Posteriormente se aplicó a estas variables se les aplicó el <a href 0 "https:/
 </ul>
 
 <p style = "font-size:20px">
-Las primeras 6 de estas variables, tienen una escala de 0 a 10 donde 10 es lo que representa "mayor satisfacción" y 0 lo contrario, las otras cuatro variables, tienen unas escalas categoricas diferentes, a las que se les realiza unas simples transformaciones para representarlas como números dordenados donde el mayor número sea lo que represente mayor satisfacción.<br>Después de todo esto, se le aplica el modelo de predicción lineal a estas diez variables y a su variable respuesta que es la satisfacción general con la vida, para de esta forma obtener un modelo de predicción con una ajuste de <b>4.6...(ojo, corregir acá santiago) agregar análisis estadístico profesional</b>.
+Las primeras 6 de estas variables, tienen una escala de 0 a 10 donde 10 es lo que representa "mayor satisfacción" y 0 lo contrario, las otras cuatro variables, tienen unas escalas categóricas diferentes, a las que se les realiza unas simples transformaciones para representarlas como números ordenados donde el mayor número sea el que represente mayor calidad de vida.<br>Después de todo esto, se le aplica una regresión linea(dada en R por el comando lm())a estas diez variables y a su variable respuesta que es la satisfacción general con la vida, obteniendo así un modelo de predicción con un $R^2$ de 0.4602 el cuál nos da a inferir que el modelo sólo puede explicar un 46% de los datos.
 </p>
+<br>
+<p style = "font-size:20px">
+Al ver que el parámetro $R^2$ no es el mejor, se procede a aplicar algunas transformaciones tanto lineales cómo logarítmicas:
+$$\mathbb{z}=\frac{X-\bar{X}}{SD(X)}$$
+$$[signo(\mathbb{z})]ln(1-|z|)$$
+</p>
+
+<br>
+<p style = "font-size:20px">
+Se le aplica esta transformación en diferentes combinaciones, tales cómo: A la variable respuesta únicamente, a todas, a algunas regresoras en diferentes combinaciones, etc. Al revisar el summary() de R, se puede apreciar que con cada intento, sólo se logra disminuir el $R^2$, por lo tanto se descarta inmediatamente las transformaciones y se procede a volver al modelo original.
+</p>
+
+\smallskip
+
+<br><br>
+<p style = "font-size:20px">
+Luego, se intenta con la siguiente transformación:$$ln(1+\frac{(X-\bar X)}{10})$$
+Se sigue un procedimiento similar aplicándolo a distintas combinaciones de variables tanto cómo a la regresora meramente, pero sólo se logra empeorar el modelo, por lo tanto se descarta.
+</p>
+<br>
+<p style = "font-size:20px">
+Prosiguiendo con la búsqueda del mejor modelo posible, procede a realizarse una regresión logística multinomial. Al aplicar este modelo, se obtuvo un missclasification error(Error de el modelo respecto a los datos originales) de el 57%, por lo que se ve que es un error mayor al modelo de regresión lineal clásico inicial, por lo tanto no se descarta el modelo inicial y procedemos a usarlo cómo el modelo final ya que fue el mejor que se pudo calcular.
+</p>
+
+MAMAS 2016
 
 <h3><b>Aplicación web</b></h3>
 <p style = "font-size:20px">
-Para este trabajo, se nos propuso realizar una aplicación web, que tuviera dos funcionalidades, la primera es poder seleccionar un hogar y visualizarlo como un red en la que se muestre la estructura familiar, la segunda que debe tener, es que con base en el modelo de predicción explicado enteriormente, la persona que ingrese a la aplicación, al ingresar los datos que esta pide, se genere una predicción de la satisfacción.<br>A la aplicación se puede acceder por medio del siguiente <a href = "https://sarestrepoal.shinyapps.io/shinyapp/">enlace</a>.<br>La aplicación esta enfocada en el impacto que genera en los hijos de madres solteras, el hecho que crecer en un ambiente monoparentas, en el siguiente <a href = "https://www.ijsr.net/archive/v3i9/U0VQMTQ0MA%3D%3D.pdf">estudio</a>, se puede ver cómo esto afecta y en que los niños que crecen en este ambiente estén más propensos a la delincuencia en la adultez.
+Para este trabajo, se nos encomendó realizar una aplicación web, que tuviera dos funcionalidades: La primera es poder seleccionar un hogar y visualizarlo como una red en la que se muestre la estructura familiar, la segunda que debe tener, es que con base en el modelo de predicción explicado anteriormente, la persona que ingrese a la aplicación, al ingresar los datos que esta pide, genere una estimación de la satisfacción.<br>A la aplicación se puede acceder por medio del siguiente <a href = "https://sarestrepoal.shinyapps.io/shinyapp/">enlace</a>.
 </p>
 
 <h3><b>Video promocional</b></h3>
 <p style = "font-size:20px">
-Para este trabajo también se nos propuso realizar un video promocional, se puede ver en el siguiete <a href="https://www.youtube.com/watch?v=9EksTN2Cg_E&rel=0">enlace</a>
+El vídeo se hizo con la finalidad de vender el producto. Para esto, tuvimos que definir un
+público objetivo al cual podría serle útil la aplicación y encontrar un problema que sea
+posible de resolver con nuestro producto.
+Así, encontramos un <a href="https://www.ijsr.net/archive/v3i9/U0VQMTQ0MA%3D%3D.pdf">estudio</a> en el que se menciona el hecho de que los niños que crecen en un
+ambiente monoparental, son más propensos a cometer actos delictivos.
+Bajo esta conclusión, definimos que el público objetivo al que va dirigido el vídeo será el
+gobierno o entidades que trabajen disminuyendo los indices de delincuencia en el país. De
+este modo, desarrollamos el vídeo publicitario mostrando nuestro producto como una solución
+a este problema, teniendo en cuenta que las variables que impactan en la satisfacción de la
+madre, son variables basadas en el entorno en el que ella se encuentre, y por consiguiente,
+también impactan a sus hijos. Es decir, una madre que tiene un nivel de satisfacción alto es
+porque las variables con respecto a su entorno tienen valores altos, lo que se traduce en
+que ella vive en un buen entorno y por consiguiente sus hijos también (núcleo familiar).
+Cabe aclarar que el enfoque de lucha contra la criminalidad <b>no es el enfoque de la
+aplicación</b> sino el enfoque que se le dio al vídeo basado en el público al que se le quiere vender, sin embargo, es posible orientarlo a otro público que pueda serle útil la misma aplicación.
+El video se puede ver en el siguiente <a href="https://www.youtube.com/watch?v=9EksTN2Cg_E&rel=0">enlace</a>
 </p>
 
 
