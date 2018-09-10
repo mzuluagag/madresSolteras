@@ -2,9 +2,10 @@ library(shiny)
 library(shinythemes)
 library(shinyBS)
 
+load(file= "www/LastPredictor",envir = .GlobalEnv,verbose = FALSE)
+
 shinyUI(fluidPage(
   theme = shinytheme("darkly"),
-  load(file= "www/LastPredictor",envir = .GlobalEnv,verbose = FALSE),
   fillRow(navbarPage("MOSAPRE", 
                                  tabPanel("Visualización de hogar como red",
                                           fluidRow(column(6, h1("Seleccione el hogar que desea visualizar", align = "center"), offset = 3)),
