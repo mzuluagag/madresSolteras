@@ -129,7 +129,7 @@ vjust = -.5)+labs(x="¿Siente que vale la pena lo que hace?",y="Frecuencia",titl
 count<-table(total$P8587)
 ```
 <p style = "font-size:20px" align="justify">
-Con esta gráfica podemos observar que en su mayoría los datos tienen a los mayores números, es decir que las madres análizadas, en general consideran que lo que hacen con su vida vale la pena.
+Con esta gráfica podemos observar que en su mayoría los datos tienden a los mayores números, es decir, que en general las madres analizadas consideran que lo que hacen con su vida vale la pena.
 </p>
 <hr>
 
@@ -144,63 +144,78 @@ count<-table(total$P5230)
 count<-as.data.frame(count)
 count$Var1<-c("Si","No")
 ```
-<table>
-  <tr>
-    <td>1</td>
-    <td>Ninguno </td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Preescolar</td>
-  </tr>
-  <tr>
-    <th>3</th>
-    <th>Básica Primaria (1º - 5º) </th>
-  </tr>
-  <tr>
-    <th>4</th>
-    <th>Básica Primaria (1º - 5º) </th>
-  </tr>
-  <tr>
-    <th>5</th>
-    <th>Media (10º--13º) </th>
-  </tr>
-  <tr>
-    <th>6</th>
-    <th>Técnico sin título </th>
-  </tr>
-  <tr>
-    <th>7</th>
-    <th>Técnico con título</th>
-  </tr>
-  <tr>
-    <th>8</th>
-    <th>Tecnológico sin título</th>
-  </tr>
-  <tr>
-    <th>9</th>
-    <th>Tecnológico con título </th>
-  </tr>
-  <tr>
-    <th>10</th>
-    <th>Universitario sin titulo</th>
-  </tr>
-  <tr>
-    <th>11</th>
-    <th>Universitario con titulo </th>
-  </tr>
-  <tr>
-    <th>12</th>
-    <th>Postgrado sin titulo </th>
-  </tr>
-  <tr>
-    <th>13</th>
-    <th>Postgrado con titulo</th>
-  </tr>
-</table>
-
+<!-- <table> -->
+<!--   <tr> -->
+<!--     <td>1</td> -->
+<!--     <td>Ninguno </td> -->
+<!--   </tr> -->
+<!--   <tr> -->
+<!--     <td>2</td> -->
+<!--     <td>Preescolar</td> -->
+<!--   </tr> -->
+<!--   <tr> -->
+<!--     <th>3</th> -->
+<!--     <th>Básica Primaria (1º - 5º) </th> -->
+<!--   </tr> -->
+<!--   <tr> -->
+<!--     <th>4</th> -->
+<!--     <th>Básica Primaria (1º - 5º) </th> -->
+<!--   </tr> -->
+<!--   <tr> -->
+<!--     <th>5</th> -->
+<!--     <th>Media (10º--13º) </th> -->
+<!--   </tr> -->
+<!--   <tr> -->
+<!--     <th>6</th> -->
+<!--     <th>Técnico sin título </th> -->
+<!--   </tr> -->
+<!--   <tr> -->
+<!--     <th>7</th> -->
+<!--     <th>Técnico con título</th> -->
+<!--   </tr> -->
+<!--   <tr> -->
+<!--     <th>8</th> -->
+<!--     <th>Tecnológico sin título</th> -->
+<!--   </tr> -->
+<!--   <tr> -->
+<!--     <th>9</th> -->
+<!--     <th>Tecnológico con título </th> -->
+<!--   </tr> -->
+<!--   <tr> -->
+<!--     <th>10</th> -->
+<!--     <th>Universitario sin titulo</th> -->
+<!--   </tr> -->
+<!--   <tr> -->
+<!--     <th>11</th> -->
+<!--     <th>Universitario con titulo </th> -->
+<!--   </tr> -->
+<!--   <tr> -->
+<!--     <th>12</th> -->
+<!--     <th>Postgrado sin titulo </th> -->
+<!--   </tr> -->
+<!--   <tr> -->
+<!--     <th>13</th> -->
+<!--     <th>Postgrado con titulo</th> -->
+<!--   </tr> -->
+<!-- </table> -->
+<table border=1 align="center">
+<tr> <th> Número </th> <th> Grado </th>  </tr>
+  <tr> <td align="center">   1 </td> <td> Ninguno </td> </tr>
+  <tr>  <td align="center">   2 </td> <td> Preescolar </td> </tr>
+  <tr> <td align="center">   3 </td> <td> Básica Primaria (1º - 5º) </td> </tr>
+  <tr>  <td align="center">   4 </td> <td> Básica secundaria (6º--9º) </td> </tr>
+  <tr>  <td align="center">   5 </td> <td> Media (10º--13º) </td> </tr>
+  <tr>  <td align="center">   6 </td> <td> Técnico sin título </td> </tr>
+  <tr>  <td align="center">   7 </td> <td> Técnico con título </td> </tr>
+  <tr>  <td align="center">   8 </td> <td> Tecnólogo sin título </td> </tr>
+  <tr>  <td align="center">   9 </td> <td> Tecnólogo con título </td> </tr>
+  <tr>  <td align="center">  10 </td> <td> Universitario sin titulo </td> </tr>
+  <tr>  <td align="center">  11 </td> <td> Universitario con titulo </td> </tr>
+  <tr>  <td align="center">  12 </td> <td> Postgrado sin titulo </td> </tr>
+  <tr>  <td align="center">  13 </td> <td> Postgrado con titulo </td> </tr>
+   </table>
 <p style = "font-size:20px" align="justify">
-Con esta gráfica, se puede observar que en su mayoría las madres análizadas no alzanzaron un alto nivel de educación, la mayoría no pasan de la educación media.
+Con esta gráfica se puede observar que en su mayoría las madres analizadas no alcanzaron un alto nivel de educación. La mayoría no pasan de la educación media.
 </p><hr>
 ```{r,echo=FALSE}
 ggplot(count, aes(x = Var1, y = Freq)) +
@@ -271,39 +286,27 @@ geom_bar(stat = "identity",colour="midnightblue",fill="midnightblue") +
 geom_text(aes(label = sprintf("%.2f%%", Freq/sum(Freq) * 100)), 
 vjust = -.5)+labs(x="Satisfacción estimada",y="Frecuencia",title="Satisfacción de vida - Madres solteras jefe de hogar")
 summary(SatisfaccionEst)
-mean(SatisfaccionEst)
-sd(SatisfaccionEst)
-sd(SatisfaccionEst)^2
+
+
+
 
 ```
 
-\begin{table}[ht]
-\centering
-\begin{tabular}{rrl}
-  \hline
- & Número & Grado \\ 
-  \hline
-1 & Ninguno \\ 
-2 & Preescolar \\ 
-3 & Básica Primaria (1º - 5º) \\ 
-4 & Básica secundaria (6º--9º) \\ 
-5 & Media (10º--13º) \\ 
-6 & Técnico sin título \\ 
-7 & Técnico con título \\ 
-8 & Tecnólogo sin título \\ 
-9 & Tecnólogo con título \\ 
-10 & Universitario sin titulo \\ 
-11 & Universitario con titulo \\ 
-12 & Postgrado sin titulo \\ 
-13 & Postgrado con titulo \\ 
-   \hline
-\end{tabular}
-\end{table}
+```{r,echo=TRUE}
+mean(SatisfaccionEst) #Media
+```
 
-Aparentemente se puede ver que los datos se distribuyen normalmente, ya que los datos se están centrado alrededor de la media que es 5.34 aproximádamente con varianza 1.04, por lo tanto se puede entender y ver que la mayoría de datos están cerca a la media la mayoría, más o menos entre 4 y 7.
-```{r,echo=FALSE}
+```{r,echo=TRUE}
+sd(SatisfaccionEst)^2 #Varianza
 
 ```
+
+
+
+<p style = "font-size:20px" align="justify">
+Aparentemente se puede visualizar que los datos siguen una distribución normal. Los datos se están centrado alrededor de la media que es 5.34 aproximádamente, con varianza 1.04; por lo tanto se puede entender y ver que la mayoría de los datos están alrededor a la media entre los valores 4 y 7.
+</p>
+
 
 
 
