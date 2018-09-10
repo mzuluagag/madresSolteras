@@ -1,3 +1,8 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
 <h1 align="center"><b>Análisis de satisfacción de las madres solteras en Colombia</b><hr><br><br></h1>
 
 <h2 align="center"><b>Asignatura</b></h2>
@@ -179,7 +184,53 @@ Se sigue un procedimiento similar aplicándolo a distintas combinaciones de vari
 Prosiguiendo con la búsqueda del mejor modelo posible, procede a realizarse una regresión logística multinomial. Al aplicar este modelo, se obtuvo un missclasification error(Error de el modelo respecto a los datos originales) de el 57%, por lo que se ve que es un error mayor al modelo de regresión lineal clásico inicial, por lo tanto no se descarta el modelo inicial y procedemos a usarlo cómo el modelo final ya que fue el mejor que se pudo calcular.
 </p>
 
-MAMAS 2016
+```{r, echo=FALSE}
+
+
+attach(total2016)
+
+count<-table(total2016$SatisfaccionEst)
+count<-as.data.frame(count)
+ggplot(count, aes(x = Var1, y = Freq)) +
+geom_bar(stat = "identity",colour="midnightblue",fill="midnightblue") +
+geom_text(aes(label = sprintf("%.2f%%", Freq/sum(Freq) * 100)), 
+vjust = -.5)+labs(x="Satisfacción estimada",y="Frecuencia",title="Satisfacción de vida - Madres solteras jefe de hogar")
+summary(SatisfaccionEst)
+mean(SatisfaccionEst)
+sd(SatisfaccionEst)
+sd(SatisfaccionEst)^2
+
+```
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrl}
+  \hline
+ & Número & Grado \\ 
+  \hline
+1 & Ninguno \\ 
+2 & Preescolar \\ 
+3 & Básica Primaria (1º - 5º) \\ 
+4 & Básica secundaria (6º--9º) \\ 
+5 & Media (10º--13º) \\ 
+6 & Técnico sin título \\ 
+7 & Técnico con título \\ 
+8 & Tecnólogo sin título \\ 
+9 & Tecnólogo con título \\ 
+10 & Universitario sin titulo \\ 
+11 & Universitario con titulo \\ 
+12 & Postgrado sin titulo \\ 
+13 & Postgrado con titulo \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+Aparentemente se puede ver que los datos se distribuyen normalmente, ya que los datos se están centrado alrededor de la media que es 5.34 aproximádamente con varianza 1.04, por lo tanto se puede entender y ver que la mayoría de datos están cerca a la media la mayoría, más o menos entre 4 y 7.
+```{r,echo=FALSE}
+
+```
+
+
 
 <h3><b>Aplicación web</b></h3>
 <p style = "font-size:20px">
