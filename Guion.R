@@ -209,12 +209,3 @@ FamNet<-function(direccion){
   
   
 }
-
-predictor<-function(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10){
-  y<-as.numeric(coefficients(modeloTransFinal)[2]*a1+coefficients(modeloTransFinal)[3]*a2+
-    coefficients(modeloTransFinal)[4]*a3+coefficients(modeloTransFinal)[5]*a4
-    +coefficients(modeloTransFinal)[6]*a5+coefficients(modeloTransFinal)[7]*a6
-    +coefficients(modeloTransFinal)[8]*a7+coefficients(modeloTransFinal)[9]*a8
-    +coefficients(modeloTransFinal)[10]*a9+coefficients(modeloTransFinal)[11]*a10)
-    return(round(y))
-}

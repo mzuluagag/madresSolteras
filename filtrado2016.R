@@ -70,18 +70,10 @@ total2016$P5676S5<-(total2016$P5676S5-1)*(10/3)
 total2016$P5676S6<-(total2016$P5676S6-1)*(10/3)
 total2016$P5676S7<-(total2016$P5676S7-1)*(10/3)
 total2016$P5677<-(((-total2016$P5677+5)-1)*(10/3))
-total2016$P9030<-(-total2016$P9030+5)
-total2016$P5095<-(-total2016$P5095+6)+1
+total2016$P9030<-total2016$P9030
+total2016$P5095<-total2016$P5095
 load("ShinyApp/www/LastPredictor")
-predictorAdapt<-function(a1,a2,a3,a4,a5,a6,a7,a8,a9){
-  y<-as.numeric(coefficients(modeloAdapt)[2]*a1+coefficients(modeloAdapt)[3]*a2+
-                  coefficients(modeloAdapt)[4]*a3+coefficients(modeloAdapt)[5]*a4
-                +coefficients(modeloAdapt)[6]*a5+coefficients(modeloAdapt)[7]*a6
-                +coefficients(modeloAdapt)[8]*a7+coefficients(modeloAdapt)[9]*a8
-                +coefficients(modeloAdapt)[10]*a9)
-  return(round(y))
 
-}
 HogaresMadresSolteras2016[is.na(HogaresMadresSolteras2016)]<-1.66666666666
 CheckDir<-0
 vecprom2016<-c()
@@ -108,9 +100,16 @@ colnames(total2016)[11]<-"prom_edad_hijos"
 attach(total2016)
 vecsas<-c()
 for(i in 1:nrow(total2016)){
-  a<-predictorAdapt(P5676S4[i],P5676S5[i],P5676S7[i],P5676S6[i],P5677[i],P9030[i],P5095[i],prom_edad_hijos[i],P8520S1A1[i])
-  vecsas[i]<-a
+  # modeloAdapt
+  aux2<-c(P5676S4[i],P5676S5[i],P5676S7[i],P5676S6[i],P5677[i],P9030[i],P5095[i],prom_edad_hijos[i],P8520S1A1[i])
+  aux2<-t(aux2)
+  aux2<-as.data.frame(aux2)
+  colnames(aux2)[]<-c("P1896","P1897","P1898","P1899","P1901","P9030","P5095","prom_edad_hijos","P8520S1A1")
+  est<-as.numeric(predict(modeloAdapt,newdata=aux2))
+  vecsas[i]<-est
 }
 total2016<-cbind2(total2016,vecsas)
 colnames(total2016)[12]<-"SatisfaccionEst"
 total2016<-na.omit(total2016)
+total2016$SatisfaccionEst<-round(total2016$SatisfaccionEst)
+total2016$SatisfaccionEst[total2016$SatisfaccionEst>10]<-10

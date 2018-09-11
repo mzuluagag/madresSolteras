@@ -249,6 +249,15 @@ Posteriormente, a estas variables se les aplicó el <a href 0 "https://www.maxim
 
 <p style = "font-size:20px" align="justify">
 Las primeras 6 de estas variables, tienen una escala de 0 a 10 donde 10 es lo que representa "mayor satisfacción" y 0 lo contrario, las otras cuatro variables, tienen unas escalas categóricas diferentes, a las que se les realiza unas simples transformaciones para representarlas como números ordenados donde el mayor número sea el que represente mayor calidad de vida.<br>Después de todo esto, se le aplica una regresión linea(dada en R por el comando lm())a estas diez variables y a su variable respuesta que es la satisfacción general con la vida, obteniendo así un modelo de predicción con un $R^2$ de 0.4602 el cuál nos da a inferir que el modelo sólo puede explicar un 46% de los datos.
+
+<p style = "font-size:20px" align="justify">
+<b>Resumen modelo</b>
+</p>
+```{r,echo=FALSE}
+summary(modeloTransFinal)
+
+```
+
 </p>
 <br>
 <p style = "font-size:20px" align="justify">
@@ -276,6 +285,9 @@ Prosiguiendo con la búsqueda del mejor modelo posible, procede a realizarse una
 
 <hr>
 <h3><b>Estimación de la satisfacción para las madres solteras en el año 2016</b></h3>
+<p style = "font-size:20px" align="justify">
+<b>Resumen de los datos:</b>
+</p>
 ```{r, echo=FALSE}
 attach(total2016)
 
@@ -287,23 +299,34 @@ geom_text(aes(label = sprintf("%.2f%%", Freq/sum(Freq) * 100)),
 vjust = -.5)+labs(x="Satisfacción estimada",y="Frecuencia",title="Satisfacción de vida - Madres solteras jefe de hogar")
 summary(SatisfaccionEst)
 ```
-
-
-```{r,echo=TRUE}
-mean(SatisfaccionEst) #Media
-```
-
-```{r,echo=TRUE}
-sd(SatisfaccionEst)^2 #Varianza
+<p style = "font-size:20px" align="justify">
+<b>Resumen modelo adaptado para 2016</b>
+</p>
+```{r,echo=FALSE}
+summary(modeloAdapt)
 
 ```
 
 <p style = "font-size:20px" align="justify">
-Nota: En la encuesta de el año 2016, no se incluyó la variable(o alguna sustituta) "¿Siente que vale la pena lo que hace?" por lo tanto, se recalculó un modelo lineal sin esa variable y se obtuvo un $R^2$ de 42%. Luego de esto, al filtrar los datos, se notó que a comparación de 2017, los datos estaban en escala de 1 a 4 y algunos estaban cómo que el menor número representaba la mejor calidad de vida, entonces se aplicaron transformaciones para tomar todos los datos en la escala y orden del modelo de 2017.
+<b>Media</b>
+</p>
+```{r,echo=FALSE}
+mean(SatisfaccionEst)
+```
+<p style = "font-size:20px" align="justify">
+<b>Varianza</b>
+</p>
+```{r,echo=FALSE}
+sd(SatisfaccionEst)^2 
+
+```
+
+<p style = "font-size:20px" align="justify">
+Nota: En la encuesta de el año 2016, no se incluyó la variable(o alguna sustituta) "¿Siente que vale la pena lo que hace?" por lo tanto, se recalculó un modelo lineal sin esa variable y se obtuvo un $R^2$ de 43%. Luego de esto, al filtrar los datos, se notó que a comparación de 2017, los datos estaban en escala de 1 a 4 y algunos estaban cómo que el menor número representaba la mejor calidad de vida, entonces se aplicaron transformaciones para tomar todos los datos en la escala y orden del modelo de 2017.
 </p>
 
 <p style = "font-size:20px" align="justify">
-Aparentemente se puede visualizar que los datos tienen forma de campana. Los datos están centrados alrededor de la media que es 5.34 aproximádamente, con varianza 1.04; por lo tanto se puede entender y ver que la mayoría de los datos están alrededor de la media entre los valores 4 y 7 aproximádamente.
+Aparentemente se puede visualizar que los datos tienen forma de campana. Los datos se encuentran en su mayoría alrededor del 7 y por la poca varianza, la cuál es 1.14 se ve que los datos tienden a oscilar entre el 6 y el 8, también se ve que la media es 7.14 .
 </p>
 
 <h3><b>Construcción y funcionamiento: Red de composición(hogar)</b></h3>
